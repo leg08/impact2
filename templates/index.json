@@ -684,8 +684,8 @@
         "166442457738b23caf-1": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
+            "title": "Quel est le délai de livraison de ma commande ?",
+            "content": "<p>Veuillez prévoir un délai de 10 à 15 jours ouvrables pour la livraison de votre commande (Délais européens) . Le traitement de votre commande prends en moyenne 1 à 3 jours ouvrables.</p>"
           }
         },
         "166442457738b23caf-2": {
