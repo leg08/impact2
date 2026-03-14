@@ -691,15 +691,31 @@
         "166442457738b23caf-2": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "title": "Puis-je suivre ma commande ?",
+            "content": "<p>Une fois votre colis expédié, vous recevrez un courrier électronique contenant les coordonnées du transporteur et votre numéro d'envoi, que vous pourrez utiliser pour suivre votre commande via ce lien : </p>"
+          }
+        },
+        "item_zktgXb": {
+          "type": "item",
+          "settings": {
+            "title": "Proposez-vous des tailles pour enfants et adultes ?",
+            "content": "<p>Oui, nous proposons des maillots pour enfants et adultes. Vous trouverez une gamme complète de tailles adaptées à toutes les tranches d'âge, des plus petits aux plus grands. Consultez notre guide des tailles pour choisir celle qui vous convient le mieux.</p>"
+          }
+        },
+        "item_U8hB8J": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
           }
         }
       },
       "block_order": [
         "166442457738b23caf-0",
         "166442457738b23caf-1",
-        "166442457738b23caf-2"
+        "166442457738b23caf-2",
+        "item_zktgXb",
+        "item_U8hB8J"
       ],
       "settings": {
         "full_width": true,
