@@ -712,8 +712,8 @@
         "item_4LgUNz": {
           "type": "item",
           "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "Comment entretenir et laver mon maillot de foot ?",
+            "content": "<p>1.<strong> Lavage à la main</strong></p><p>C'est la méthode la plus sûre. Utilisez de l'eau froide ou tiède et un détergent doux.</p><p>2. <strong>Lavage en machine</strong></p><p>Si vous utilisez une machine à laver, retournez le maillot à l'envers et utilisez un cycle délicat à l'eau froide. Évitez l'utilisation de l'eau chaude qui pourrait endommager les impressions.</p><p>3. <strong>Évitez les produits chimiques</strong></p><p>N'utilisez pas de javel ni d'adoucissant, car ils peuvent endommager le tissu et les impressions.</p><p>4.<strong> Séchage</strong></p><p>Laissez sécher à l'air libre à l'ombre. Évitez le séchage en machine et l'exposition directe au soleil pour prévenir la décoloration et la déformation.</p><p>5. <strong>Repassage</strong></p><p>Si nécessaire, repassez à basse température à l'envers et évitez de passer le fer directement sur les impressions ou les logos.</p>"
           }
         }
       },
