@@ -162,7 +162,7 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "",
+        "collection": "collection-2025-2026",
         "products": [],
         "full_width": true,
         "stack_products": false,
