@@ -316,6 +316,20 @@
     "collection_list_apUPVA": {
       "type": "collection-list",
       "blocks": {
+        "collection_6LjzeE": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "collection_TC7npw": {
           "type": "collection",
           "settings": {
@@ -360,6 +374,7 @@
         }
       },
       "block_order": [
+        "collection_6LjzeE",
         "collection_TC7npw",
         "collection_EVdpKL",
         "collection_qd93QY"
@@ -407,6 +422,93 @@
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
+      }
+    },
+    "image_link_blocks_cCd3F4": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_DbypFW": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_XUaL8y": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_VhwNpj": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_hMxR7k": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_UPYDpz": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_DbypFW",
+        "item_XUaL8y",
+        "item_VhwNpj",
+        "item_hMxR7k",
+        "item_UPYDpz"
+      ],
+      "name": "Image link blocks",
+      "settings": {
+        "full_width": false,
+        "block_size": "medium",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
       }
     },
     "impact-text": {
@@ -508,6 +610,7 @@
     "featured_collection_jU8Fxq",
     "collection_list_apUPVA",
     "featured_collection_3aPDXz",
+    "image_link_blocks_cCd3F4",
     "impact-text",
     "faq"
   ]
