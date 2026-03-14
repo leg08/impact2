@@ -677,8 +677,8 @@
         "166442457738b23caf-0": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
+            "title": "Quel est le délai de traitement et d'expéditions des articles ?",
+            "content": "<p>Après réception de votre commande, nous effectuons des contrôles de qualité et des tests afin de garantir la qualité du produit avant son expédition. Le délai de traitement varie en fonction du produit spécifique, avec un délai moyen d'environ 1 à 3 jours ouvrés.</p>"
           }
         },
         "166442457738b23caf-1": {
@@ -702,16 +702,16 @@
         "166442457738b23caf-2"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "content": "<p>Notre support client est disponible 24h/24 et 7j/7.</p>",
         "team_avatar_width": 160,
         "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
         "answer_time": "Average answer time: 24h",
         "button_text": "",
         "button_url": "",
-        "text_position": "start",
+        "text_position": "center",
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": "",
