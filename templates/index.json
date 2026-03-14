@@ -588,10 +588,10 @@
           "settings": {
             "image_rotation_degrees": -2,
             "subheading": "",
-            "title": "Heading 1",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_url": "",
-            "button_text": "fghj"
+            "title": "KITS ENFANTS",
+            "content": "<p>kits complets pour enfants, comprenant maillots de foot, shorts.</p>",
+            "button_url": "shopify://collections/kits-enfants",
+            "button_text": "Découvrir..."
           }
         }
       },
@@ -614,7 +614,7 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "",
+        "collection": "kits-enfants",
         "products": [],
         "full_width": true,
         "stack_products": false,
@@ -623,7 +623,7 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "{{ section.settings.collection.title }}",
         "content": "",
         "link_url": "",
         "link_text": "View all",
