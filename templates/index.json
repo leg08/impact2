@@ -120,30 +120,17 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
-        },
-        "e4a0ef18-1856-4ddd-83d8-871a60d7acac": {
-          "type": "item",
-          "settings": {
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
         }
       },
       "block_order": [
         "1664424046b00c932c-0",
         "1664424046b00c932c-1",
         "1664424046b00c932c-2",
-        "1664424046b00c932c-3",
-        "e4a0ef18-1856-4ddd-83d8-871a60d7acac"
+        "1664424046b00c932c-3"
       ],
       "settings": {
         "full_width": false,
-        "block_size": "medium",
+        "block_size": "large",
         "subheading": "",
         "title": "",
         "content": "",
@@ -161,7 +148,7 @@
       "settings": {
         "full_width": true,
         "text": "Promotion text",
-        "text_size": "large",
+        "text_size": "xsmall",
         "text_style": "fill",
         "scrolling_mode": "auto",
         "scrolling_speed": 5,
@@ -197,86 +184,18 @@
         "product_card_text_color": ""
       }
     },
-    "collection-list": {
-      "type": "collection-list",
-      "blocks": {
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection-2": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection-3": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "collection-1",
-        "collection-2",
-        "collection-3"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_collections": false,
-        "collections_per_row_mobile": "1",
-        "collections_per_row": 3,
-        "show_progress_bar": false,
-        "subheading": "",
-        "title": "Collection list",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "featured-collection": {
+    "featured_collection_rz6tnV": {
       "type": "featured-collection",
+      "name": "Featured collection",
       "settings": {
         "collection": "",
         "products": [],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": false,
-        "products_count": 6,
+        "products_count": 20,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
+        "products_per_row_desktop": 5,
         "subheading": "",
         "title": "Featured collection",
         "content": "",
@@ -795,8 +714,7 @@
     "image-link-blocks",
     "scrolling-text",
     "featured_collection_pgTQ8M",
-    "collection-list",
-    "featured-collection",
+    "featured_collection_rz6tnV",
     "impact-text",
     "image-with-text-overlay",
     "media-grid",
