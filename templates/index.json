@@ -147,11 +147,11 @@
       "type": "scrolling-text",
       "settings": {
         "full_width": true,
-        "text": "Promotion text",
+        "text": "3 Achetés = 1 OFFERT",
         "text_size": "xsmall",
         "text_style": "fill",
         "scrolling_mode": "auto",
-        "scrolling_speed": 5,
+        "scrolling_speed": 10,
         "background": "",
         "background_gradient": "",
         "text_color": "",
