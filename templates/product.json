@@ -93,6 +93,36 @@
         "payment_terms": {
           "type": "payment_terms",
           "settings": {}
+        },
+        "collapsible_text_tpqc6k": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_KKw7hd": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_tMGr89": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Title",
+            "content": "<p>Share some content to your customers about your products.</p>",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -108,7 +138,10 @@
         "liquid_FzeW8t",
         "quantity_selector",
         "buy_buttons",
-        "payment_terms"
+        "payment_terms",
+        "collapsible_text_tpqc6k",
+        "collapsible_text_KKw7hd",
+        "collapsible_text_tMGr89"
       ],
       "settings": {
         "full_width": true,
