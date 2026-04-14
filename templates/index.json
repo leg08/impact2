@@ -284,7 +284,7 @@
         "product_card_text_color": "",
         "product_card_mobile_background": "",
         "product_card_mobile_text_color": "",
-        "background_dots": "#FFF"
+        "background_dots": "#ffffff"
       }
     },
     "featured_collection_jU8Fxq": {
@@ -402,7 +402,7 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "",
+        "collection": "crampons",
         "products": [],
         "full_width": true,
         "stack_products": false,
@@ -411,7 +411,7 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "{{ section.settings.collection.title }}",
         "content": "",
         "link_url": "",
         "link_text": "View all",
