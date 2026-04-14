@@ -50,7 +50,7 @@
       "settings": {
         "enable_sticky": true,
         "hide_on_scroll": false,
-        "logo": "{{shop.brand.logo}}",
+        "logo": "shopify://shop_images/555a9981-7bc8-4d6d-b49d-4a1a6aa291bf.png",
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
