@@ -485,7 +485,7 @@
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "club-francais",
+        "collection": "survetements",
         "products": [],
         "full_width": true,
         "stack_products": false,
