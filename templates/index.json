@@ -85,6 +85,32 @@
         "text_gradient": ""
       }
     },
+    "featured_collection_jU8Fxq": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "cdm-2026",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 20,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "{{ section.settings.collection.title }}",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "featured_collection_pgTQ8M": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -111,37 +137,11 @@
         "product_card_text_color": ""
       }
     },
-    "featured_collection_rz6tnV": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "collection": "body",
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_count": 20,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "{{ section.settings.collection.title }}",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "featured_collection_yidKb3": {
       "type": "featured-collection",
       "name": "Featured collection",
       "settings": {
-        "collection": "womens-euro-2025",
+        "collection": "collection-2024-2025",
         "products": [],
         "full_width": true,
         "stack_products": false,
@@ -152,83 +152,6 @@
         "subheading": "",
         "title": "NOUVEAUTÉS EN EXCLUSIVITÉ",
         "content": "<p>{{ section.settings.collection.title }}</p>",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "shop_the_look_UQkG3Q": {
-      "type": "shop-the-look",
-      "blocks": {
-        "product_Qc8iNW": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "horizontal_position": 52,
-            "vertical_position": 25
-          }
-        },
-        "product_XjDCbF": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "horizontal_position": 75,
-            "vertical_position": 53
-          }
-        },
-        "product_tK7eT3": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "horizontal_position": 33,
-            "vertical_position": 73
-          }
-        }
-      },
-      "block_order": [
-        "product_Qc8iNW",
-        "product_XjDCbF",
-        "product_tK7eT3"
-      ],
-      "name": "Shop the look",
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "title": "LE PRINCE EST DE RETOUR",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": "",
-        "product_card_mobile_background": "",
-        "product_card_mobile_text_color": "",
-        "background_dots": "#ffffff"
-      }
-    },
-    "featured_collection_jU8Fxq": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "collection": "cdm-2026",
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_count": 20,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "{{ section.settings.collection.title }}",
-        "content": "",
         "link_url": "",
         "link_text": "View all",
         "background": "",
@@ -563,6 +486,32 @@
         "product_card_text_color": ""
       }
     },
+    "featured_collection_rz6tnV": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "body",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 20,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "{{ section.settings.collection.title }}",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "impact-text": {
       "type": "impact-text",
       "blocks": {
@@ -678,11 +627,9 @@
   "order": [
     "slideshow",
     "scrolling-text",
-    "featured_collection_pgTQ8M",
-    "featured_collection_rz6tnV",
-    "featured_collection_yidKb3",
-    "shop_the_look_UQkG3Q",
     "featured_collection_jU8Fxq",
+    "featured_collection_pgTQ8M",
+    "featured_collection_yidKb3",
     "collection_list_apUPVA",
     "featured_collection_3aPDXz",
     "image_link_blocks_cCd3F4",
@@ -690,6 +637,7 @@
     "featured_collection_LDd7nX",
     "multiple_images_with_text_G4AYzq",
     "featured_collection_kbH6hb",
+    "featured_collection_rz6tnV",
     "impact-text",
     "faq"
   ]
