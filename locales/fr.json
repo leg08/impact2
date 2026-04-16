@@ -445,7 +445,7 @@
       "general": {
         "list_formatter": {
           "or": {
-            "lastWordConnector": "test"
+            "twoWordConnector": "test"
           }
         }
       }
