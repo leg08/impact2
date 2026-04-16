@@ -439,16 +439,5 @@
         "other": "Il a reçu {{ count }} avis."
       }
     }
-  },
-  "shopify": {
-    "checkout": {
-      "general": {
-        "list_formatter": {
-          "or": {
-            "twoWordConnector": "test"
-          }
-        }
-      }
-    }
   }
 }
