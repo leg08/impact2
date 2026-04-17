@@ -12,9 +12,11 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
+        "inventory_BLedLJ": {
+          "type": "inventory",
+          "settings": {
+            "low_inventory_threshold": 0
+          }
         },
         "title": {
           "type": "title",
@@ -36,20 +38,6 @@
           "type": "rating",
           "settings": {
             "show_empty": false
-          }
-        },
-        "separator": {
-          "type": "separator",
-          "disabled": true,
-          "settings": {}
-        },
-        "description": {
-          "type": "description",
-          "disabled": true,
-          "settings": {
-            "icon": "none",
-            "icon_width": 20,
-            "collapse_content": false
           }
         },
         "variant_picker": {
@@ -126,13 +114,11 @@
         }
       },
       "block_order": [
-        "vendor",
+        "inventory_BLedLJ",
         "title",
         "badges",
         "price",
         "rating",
-        "separator",
-        "description",
         "variant_picker",
         "liquid_iLehtB",
         "liquid_FzeW8t",
@@ -151,7 +137,7 @@
         "mobile_media_size": "expanded",
         "mobile_carousel_control": "floating_dots",
         "enable_video_autoplay": false,
-        "enable_video_looping": true,
+        "enable_video_looping": false,
         "enable_image_zoom": true,
         "max_image_zoom_level": 3,
         "background": "",
