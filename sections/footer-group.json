@@ -92,8 +92,8 @@
           "type": "newsletter",
           "settings": {
             "image_width": 150,
-            "heading_size": "h3",
-            "title": "Inscrivez-vous et bénéficiez de 10% de réduction",
+            "heading_size": "h4",
+            "title": "-10% sur ta première commande",
             "content": ""
           }
         },
