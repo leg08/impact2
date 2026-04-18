@@ -103,8 +103,8 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
+            "title": "Matériaux & Entretien",
+            "content": "<ul><li>Laver à l’envers à <strong>30°C<br/>Éviter le sèche-linge</strong> (pour préserver le flocage)</li><li>Ne pas repasser directement sur l’impression / le flocage</li><li>Séchage à l’air libre recommandé</li><li>Laver avec des couleurs similaires</li></ul>",
             "page": ""
           }
         },
