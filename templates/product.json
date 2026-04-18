@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "liquid_LB4TXW": {
+          "type": "liquid",
+          "settings": {
+            "liquid": ""
+          }
+        },
         "inventory_BLedLJ": {
           "type": "inventory",
           "settings": {
@@ -120,6 +126,7 @@
         }
       },
       "block_order": [
+        "liquid_LB4TXW",
         "inventory_BLedLJ",
         "title",
         "badges",
