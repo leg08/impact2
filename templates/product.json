@@ -34,6 +34,12 @@
             "show_taxes_notice": false
           }
         },
+        "text_JnKdT4": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>🔥 2 maillots achetés = 1 OFFERT + 🚚 Livraison offerte </strong></p>"
+          }
+        },
         "rating": {
           "type": "rating",
           "settings": {
@@ -87,8 +93,8 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "Title",
-            "content": "<p>Share some content to your customers about your products.</p>",
+            "title": "Spécifications",
+            "content": "<ul><li><strong>Coupe :</strong> standard / unisexe (prend ta taille habituelle)</li><li><strong>Matière :</strong> tissu respirant, léger et agréable à porter</li><li><strong>Flocage :</strong> finition premium, rendu net et durable</li><li><strong>Détails :</strong> écussons + logos intégrés selon le modèle</li><li><strong>Confort : </strong>idéal au quotidien comme pour le sport</li></ul>",
             "page": ""
           }
         },
@@ -118,6 +124,7 @@
         "title",
         "badges",
         "price",
+        "text_JnKdT4",
         "rating",
         "variant_picker",
         "liquid_iLehtB",
