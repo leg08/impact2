@@ -12,12 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "liquid_LB4TXW": {
-          "type": "liquid",
-          "settings": {
-            "liquid": ""
-          }
-        },
         "inventory_BLedLJ": {
           "type": "inventory",
           "settings": {
@@ -33,6 +27,12 @@
         "badges": {
           "type": "badges",
           "settings": {}
+        },
+        "liquid_NmxaJX": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<div class=\"flocage-option\" style=\"margin-top: 16px;\">\n  <p style=\"margin: 0 0 8px; font-weight: 600;\">Flocage</p>\n\n  <style>\n    .flocage-toggle-input {\n      display: none;\n    }\n\n    .flocage-toggle-label {\n      display: inline-block;\n      padding: 12px 18px;\n      border: 1px solid #111;\n      background: #111;\n      color: #fff;\n      cursor: pointer;\n      border-radius: 6px;\n      font-size: 14px;\n    }\n\n    .flocage-text-field {\n      display: none;\n      margin-top: 12px;\n    }\n\n    .flocage-toggle-input:checked + .flocage-toggle-label + .flocage-text-field {\n      display: block;\n    }\n\n    .flocage-text-field input {\n      width: 100%;\n      padding: 12px;\n      border: 1px solid #ccc;\n      border-radius: 6px;\n      font-size: 14px;\n      box-sizing: border-box;\n    }\n  </style>\n\n  <input type=\"checkbox\" id=\"flocage-toggle\" class=\"flocage-toggle-input\">\n  <label for=\"flocage-toggle\" class=\"flocage-toggle-label\">Ajouter un flocage</label>\n\n  <div class=\"flocage-text-field\">\n    <label for=\"flocage-text\" style=\"display: block; margin-bottom: 6px; font-weight: 500;\">\n      Texte du flocage\n    </label>\n    <input\n      type=\"text\"\n      id=\"flocage-text\"\n      name=\"properties[Flocage souhaité]\"\n      placeholder=\"Ex: MBAPPE 10\"\n    >\n  </div>\n</div>"
+          }
         },
         "price": {
           "type": "price",
@@ -126,10 +126,10 @@
         }
       },
       "block_order": [
-        "liquid_LB4TXW",
         "inventory_BLedLJ",
         "title",
         "badges",
+        "liquid_NmxaJX",
         "price",
         "text_JnKdT4",
         "rating",
