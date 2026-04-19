@@ -172,12 +172,12 @@ Supported variables
 
         {%- when 'variant_picker' -%}
           <div class="product-info__variant-picker">
-            {%- render 'variant-picker', 
-              product: product, 
+            {%- render 'variant-picker',
+              product: product,
               form_id: product_form_id,
-              update_url: update_url, 
-              hide_sold_out_variants: block.settings.hide_sold_out_variants, 
-              block: block 
+              update_url: update_url,
+              hide_sold_out_variants: block.settings.hide_sold_out_variants,
+              block: block
             -%}
           </div>
 
@@ -309,8 +309,246 @@ Supported variables
 
         {%- when 'buy_buttons' -%}
           {%- assign main_form_exists = true -%}
+          {%- assign flocage_price = 490 -%}
+          {%- assign selected_variant = product.selected_or_first_available_variant -%}
+
+          {%- if selected_variant != nil -%}
+            {%- assign flocage_total_price = selected_variant.price | plus: flocage_price -%}
+          {%- else -%}
+            {%- assign flocage_total_price = flocage_price -%}
+          {%- endif -%}
 
           {%- if request.page_type != 'password' -%}
+            <style>
+              .product-info__flocage {
+                margin-bottom: 1rem;
+              }
+
+              .flocage-option {
+                padding: 1rem;
+                border: 1px solid rgba(0, 0, 0, 0.12);
+                border-radius: 12px;
+              }
+
+              .flocage-option__header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-bottom: 0.75rem;
+              }
+
+              .flocage-option__title {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: 600;
+              }
+
+              .flocage-option__price {
+                font-size: 0.95rem;
+                font-weight: 600;
+                white-space: nowrap;
+              }
+
+              .flocage-option__toggle {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+              }
+
+              .flocage-option__button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                min-height: 48px;
+                padding: 0.9rem 1rem;
+                border: 1px solid #111;
+                border-radius: 999px;
+                background: #111;
+                color: #fff;
+                cursor: pointer;
+                font-size: 0.95rem;
+                font-weight: 600;
+                text-align: center;
+                transition: background 0.2s ease, border-color 0.2s ease;
+              }
+
+              .flocage-option__toggle:checked + .flocage-option__button {
+                background: #0f766e;
+                border-color: #0f766e;
+              }
+
+              .flocage-option__content {
+                display: none;
+                margin-top: 0.9rem;
+              }
+
+              .flocage-option__toggle:checked + .flocage-option__button + .flocage-option__content {
+                display: block;
+              }
+
+              .flocage-option__label {
+                display: block;
+                margin-bottom: 0.45rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+              }
+
+              .flocage-option__input {
+                width: 100%;
+                min-height: 46px;
+                padding: 0.8rem 0.95rem;
+                border: 1px solid #d4d4d8;
+                border-radius: 10px;
+                background: #fff;
+                color: #111;
+                box-sizing: border-box;
+              }
+
+              .flocage-option__summary {
+                margin-top: 0.9rem;
+                padding-top: 0.9rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+              }
+
+              .flocage-option__summary-line {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                font-size: 0.92rem;
+              }
+
+              .flocage-option__summary-line + .flocage-option__summary-line {
+                margin-top: 0.35rem;
+              }
+
+              .flocage-option__summary-line strong {
+                font-weight: 600;
+              }
+            </style>
+
+            <div class="product-info__flocage">
+              <div class="flocage-option" data-flocage-root>
+                <div class="flocage-option__header">
+                  <p class="flocage-option__title">Flocage</p>
+                  <span class="flocage-option__price">+ {{ flocage_price | money }}</span>
+                </div>
+
+                <input
+                  type="checkbox"
+                  id="{{ product_form_id }}-flocage-toggle"
+                  class="flocage-option__toggle"
+                  name="properties[Flocage]"
+                  value="Oui"
+                  form="{{ product_form_id }}"
+                  data-flocage-toggle
+                >
+
+                <label for="{{ product_form_id }}-flocage-toggle" class="flocage-option__button">
+                  Ajouter un flocage
+                </label>
+
+                <div class="flocage-option__content">
+                  <label for="{{ product_form_id }}-flocage-text" class="flocage-option__label">Texte du flocage</label>
+                  <input
+                    type="text"
+                    id="{{ product_form_id }}-flocage-text"
+                    class="flocage-option__input"
+                    name="properties[Texte flocage]"
+                    placeholder="Ex: MBAPPE 10"
+                    form="{{ product_form_id }}"
+                    disabled
+                    data-flocage-text
+                  >
+
+                  <input
+                    type="hidden"
+                    name="properties[Supplement flocage]"
+                    value="{{ flocage_price | money }}"
+                    form="{{ product_form_id }}"
+                    disabled
+                    data-flocage-supplement
+                  >
+
+                  <div class="flocage-option__summary">
+                    <div class="flocage-option__summary-line" data-flocage-base-line>
+                      <span>Prix du produit</span>
+                      <strong>
+                        {%- if selected_variant != nil -%}
+                          {{ selected_variant.price | money }}
+                        {%- else -%}
+                          {{ 0 | money }}
+                        {%- endif -%}
+                      </strong>
+                    </div>
+
+                    <div class="flocage-option__summary-line" data-flocage-total-line hidden>
+                      <span>Prix avec flocage</span>
+                      <strong>{{ flocage_total_price | money }}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              (function() {
+                function syncFlocage(root) {
+                  var toggle = root.querySelector('[data-flocage-toggle]');
+                  var textInput = root.querySelector('[data-flocage-text]');
+                  var supplementInput = root.querySelector('[data-flocage-supplement]');
+                  var baseLine = root.querySelector('[data-flocage-base-line]');
+                  var totalLine = root.querySelector('[data-flocage-total-line]');
+
+                  if (!toggle) {
+                    return;
+                  }
+
+                  var checked = toggle.checked;
+
+                  if (textInput) {
+                    textInput.disabled = !checked;
+
+                    if (!checked) {
+                      textInput.value = '';
+                    }
+                  }
+
+                  if (supplementInput) {
+                    supplementInput.disabled = !checked;
+                  }
+
+                  if (baseLine) {
+                    baseLine.hidden = checked;
+                  }
+
+                  if (totalLine) {
+                    totalLine.hidden = !checked;
+                  }
+                }
+
+                if (!window.flocageOptionBound) {
+                  window.flocageOptionBound = true;
+
+                  document.addEventListener('change', function(event) {
+                    if (!event.target.matches('[data-flocage-toggle]')) {
+                      return;
+                    }
+
+                    var root = event.target.closest('[data-flocage-root]');
+
+                    if (root) {
+                      syncFlocage(root);
+                    }
+                  });
+                }
+
+                document.querySelectorAll('[data-flocage-root]').forEach(syncFlocage);
+              })();
+            </script>
+
             <div class="product-info__buy-buttons">
               {%- render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: block.settings.show_payment_button, show_gift_card_recipient: block.settings.show_gift_card_recipient, atc_button_background: block.settings.atc_button_background, atc_button_text_color: block.settings.atc_button_text_color, payment_button_background: block.settings.payment_button_background, payment_button_text_color: block.settings.payment_button_text_color -%}
             </div>
