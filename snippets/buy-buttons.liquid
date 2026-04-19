@@ -2,19 +2,6 @@
 ----------------------------------------------------------------------------------------------------------------------
 BUY BUTTONS
 ----------------------------------------------------------------------------------------------------------------------
-
-This component is used to show the buy buttons
-
-Supported variables:
-- product
-- show_payment_button
-- show_gift_card_recipient
-- button_size
-- atc_button_background
-- atc_button_text_color
-- payment_button_background
-- payment_button_text_color
-- form_id
 {%- endcomment -%}
 
 {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
@@ -26,16 +13,44 @@ Supported variables:
   {%- assign show_payment_button = false -%}
 {%- endif -%}
 
-{%- form 'product', product, is: 'product-form', id: form_id, data-flocage-addon-variant-id: '59381501558865', data-product-title: product.title -%}
-  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+{%- liquid
+  assign hide_flocage = false
+  assign product_type_downcase = product.type | downcase
+  assign product_title_downcase = product.title | downcase
+
+  if product_type_downcase contains 'chaussure' or product_type_downcase contains 'crampon'
+    assign hide_flocage = true
+  endif
+
+  if product_title_downcase contains 'chaussure' or product_title_downcase contains 'crampon'
+    assign hide_flocage = true
+  endif
+-%}
+
+{%- unless hide_flocage -%}
+  {%- for tag in product.tags -%}
+    {%- assign tag_downcase = tag | downcase -%}
+
+    {%- if tag_downcase contains 'chaussure' or tag_downcase contains 'crampon' -%}
+      {%- assign hide_flocage = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endunless -%}
+
+{%- assign flocage_price = 490 -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+
+{%- form 'product', product, is: 'product-form', id: form_id -%}
+  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ selected_variant.id }}">
 
   {%- assign button_disabled = false -%}
   {%- assign button_size = button_size | default: 'xl' -%}
 
-  {%- if product.selected_or_first_available_variant == nil -%}
+  {%- if selected_variant == nil -%}
     {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
     {%- assign button_disabled = true -%}
-  {%- elsif product.selected_or_first_available_variant.available -%}
+  {%- elsif selected_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
       {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
     {%- else -%}
@@ -73,6 +88,159 @@ Supported variables:
       </gift-card-recipient>
     {%- endif -%}
 
+    {%- unless hide_flocage -%}
+      <style>
+        .flocage-option {
+          padding: 1rem;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          border-radius: 12px;
+        }
+
+        .flocage-option__header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .flocage-option__title {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .flocage-option__price {
+          font-size: 0.95rem;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+
+        .flocage-option__toggle {
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        .flocage-option__button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          min-height: 48px;
+          padding: 0.9rem 1rem;
+          border: 1px solid #111;
+          border-radius: 999px;
+          background: #111;
+          color: #fff;
+          cursor: pointer;
+          font-size: 0.95rem;
+          font-weight: 600;
+          text-align: center;
+          transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .flocage-option__toggle:checked + .flocage-option__button {
+          background: #0f766e;
+          border-color: #0f766e;
+        }
+
+        .flocage-option__content {
+          display: none;
+          margin-top: 0.9rem;
+        }
+
+        .flocage-option__toggle:checked + .flocage-option__button + .flocage-option__content {
+          display: block;
+        }
+
+        .flocage-option__label {
+          display: block;
+          margin-bottom: 0.45rem;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        .flocage-option__input {
+          width: 100%;
+          min-height: 46px;
+          padding: 0.8rem 0.95rem;
+          border: 1px solid #d4d4d8;
+          border-radius: 10px;
+          background: #fff;
+          color: #111;
+          box-sizing: border-box;
+        }
+
+        .flocage-option__summary {
+          margin-top: 0.9rem;
+          padding-top: 0.9rem;
+          border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .flocage-option__summary-line {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          font-size: 0.92rem;
+        }
+
+        .flocage-option__summary-line + .flocage-option__summary-line {
+          margin-top: 0.35rem;
+        }
+
+        .flocage-option__summary-line strong {
+          font-weight: 600;
+        }
+      </style>
+
+      <div class="flocage-option" data-flocage-root data-base-price="{{ selected_variant.price | default: 0 }}" data-flocage-price="{{ flocage_price }}">
+        <div class="flocage-option__header">
+          <p class="flocage-option__title">Flocage</p>
+          <span class="flocage-option__price">+ {{ flocage_price | money }}</span>
+        </div>
+
+        <input
+          type="checkbox"
+          id="{{ form_id }}-flocage-toggle"
+          class="flocage-option__toggle"
+          name="properties[Flocage]"
+          value="Oui"
+          data-flocage-toggle
+        >
+
+        <label for="{{ form_id }}-flocage-toggle" class="flocage-option__button">
+          Ajouter un flocage
+        </label>
+
+        <div class="flocage-option__content">
+          <label for="{{ form_id }}-flocage-text" class="flocage-option__label">Texte du flocage</label>
+          <input
+            type="text"
+            id="{{ form_id }}-flocage-text"
+            class="flocage-option__input"
+            name="properties[Texte flocage]"
+            placeholder="Ex: MBAPPE 10"
+            disabled
+            data-flocage-text
+          >
+
+          <div class="flocage-option__summary">
+            <div class="flocage-option__summary-line" data-flocage-base-line>
+              <span>Prix du produit</span>
+              <strong>{{ selected_variant.price | default: 0 | money }}</strong>
+            </div>
+
+            <div class="flocage-option__summary-line" data-flocage-total-line hidden>
+              <span>Prix avec flocage</span>
+              <strong>{{ selected_variant.price | default: 0 | plus: flocage_price | money }}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endunless -%}
+
     <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
       {%- render 'button', content: button_content, type: 'submit', size: button_size, disabled: button_disabled, secondary: show_payment_button, subdued: button_disabled, background: atc_button_background, text_color: atc_button_text_color -%}
 
@@ -81,7 +249,7 @@ Supported variables:
 
         <style>
           #{{ form_id }} .shopify-payment-button {
-            {%- unless product.selected_or_first_available_variant.available -%}
+            {%- unless selected_variant.available -%}
               display: none;
             {%- endunless -%}
 
@@ -101,137 +269,99 @@ Supported variables:
 
 <script>
   (function() {
-    if (window.flocageAddonBound) {
-      return;
+    function formatMoneyFromShopify(cents) {
+      if (window.Shopify && typeof window.Shopify.formatMoney === 'function') {
+        return window.Shopify.formatMoney(cents, {{ shop.money_format | json }});
+      }
+
+      return (cents / 100).toFixed(2).replace('.', ',') + ' EUR';
     }
 
-    window.flocageAddonBound = true;
-
-    function getFlocageElements(form) {
-      return {
-        toggle: document.getElementById(form.id + '-flocage-toggle'),
-        textInput: document.getElementById(form.id + '-flocage-text'),
-        paymentButton: form.querySelector('.shopify-payment-button')
-      };
+    function getMainPriceContainer() {
+      return document.querySelector('.product-info__price .price-list')
+        || document.querySelector('.product-info__price')
+        || document.querySelector('.price-list');
     }
 
-    function updatePaymentButtonVisibility(form) {
-      var elements = getFlocageElements(form);
+    function getPriceTargets(container) {
+      if (!container) {
+        return [];
+      }
 
-      if (!elements.paymentButton || !elements.toggle) {
+      var candidates = container.querySelectorAll('.price, .price-list__current, .price-item--regular, .text-lg, sale-price, compare-at-price');
+      if (candidates.length > 0) {
+        return Array.prototype.slice.call(candidates);
+      }
+
+      return [container];
+    }
+
+    function syncFlocage(root) {
+      var toggle = root.querySelector('[data-flocage-toggle]');
+      var textInput = root.querySelector('[data-flocage-text]');
+      var baseLine = root.querySelector('[data-flocage-base-line]');
+      var totalLine = root.querySelector('[data-flocage-total-line]');
+      var mainPriceContainer = getMainPriceContainer();
+
+      if (!toggle) {
         return;
       }
 
-      elements.paymentButton.style.display = elements.toggle.checked ? 'none' : '';
+      var checked = toggle.checked;
+      var basePrice = parseInt(root.getAttribute('data-base-price') || '0', 10);
+      var flocagePrice = parseInt(root.getAttribute('data-flocage-price') || '0', 10);
+      var totalPrice = checked ? basePrice + flocagePrice : basePrice;
+
+      if (textInput) {
+        textInput.disabled = !checked;
+
+        if (!checked) {
+          textInput.value = '';
+        }
+      }
+
+      if (baseLine) {
+        baseLine.hidden = checked;
+      }
+
+      if (totalLine) {
+        totalLine.hidden = !checked;
+        var strong = totalLine.querySelector('strong');
+        if (strong) {
+          strong.textContent = formatMoneyFromShopify(totalPrice);
+        }
+      }
+
+      var priceTargets = getPriceTargets(mainPriceContainer);
+      priceTargets.forEach(function(target) {
+        if (!target.hasAttribute('data-original-price-html')) {
+          target.setAttribute('data-original-price-html', target.innerHTML);
+        }
+
+        if (checked) {
+          target.textContent = formatMoneyFromShopify(totalPrice);
+        } else {
+          target.innerHTML = target.getAttribute('data-original-price-html');
+        }
+      });
     }
 
-    function extractProperties(formData) {
-      var properties = {};
+    if (!window.flocageVisualPriceBound) {
+      window.flocageVisualPriceBound = true;
 
-      formData.forEach(function(value, key) {
-        if (key.indexOf('properties[') !== 0) {
+      document.addEventListener('change', function(event) {
+        if (!event.target.matches('[data-flocage-toggle]')) {
           return;
         }
 
-        var propertyName = key.replace('properties[', '').replace(']', '');
-        properties[propertyName] = value;
-      });
+        var root = event.target.closest('[data-flocage-root]');
 
-      return properties;
-    }
-
-    async function addProductWithFlocage(form) {
-      var addonVariantId = form.dataset.flocageAddonVariantId;
-      var formData = new FormData(form);
-      var mainVariantId = formData.get('id');
-      var quantity = parseInt(formData.get('quantity') || '1', 10);
-      var flocageTextInput = document.getElementById(form.id + '-flocage-text');
-      var flocageText = flocageTextInput ? flocageTextInput.value.trim() : '';
-      var properties = extractProperties(formData);
-
-      if (!mainVariantId || !addonVariantId) {
-        throw new Error('Missing variant id');
-      }
-
-      var items = [
-        {
-          id: Number(mainVariantId),
-          quantity: quantity,
-          properties: properties
-        },
-        {
-          id: Number(addonVariantId),
-          quantity: quantity,
-          properties: {
-            '_Addon': 'Flocage',
-            '_Produit lie': form.dataset.productTitle || 'Produit',
-            'Texte flocage': flocageText
-          }
+        if (root) {
+          syncFlocage(root);
         }
-      ];
-
-      if (formData.get('selling_plan')) {
-        items[0].selling_plan = formData.get('selling_plan');
-      }
-
-      var response = await fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ items: items })
       });
-
-      if (!response.ok) {
-        throw new Error('Cart add failed');
-      }
-
-      window.location.href = '/cart';
     }
 
-    document.addEventListener('change', function(event) {
-      if (!event.target.id || event.target.id.indexOf('-flocage-toggle') === -1) {
-        return;
-      }
-
-      var formId = event.target.id.replace('-flocage-toggle', '');
-      var form = document.getElementById(formId);
-
-      if (form) {
-        updatePaymentButtonVisibility(form);
-      }
-    });
-
-    document.addEventListener('submit', function(event) {
-      var form = event.target;
-
-      if (!form.matches('form[is="product-form"]')) {
-        return;
-      }
-
-      var elements = getFlocageElements(form);
-
-      if (!elements.toggle || !elements.toggle.checked) {
-        return;
-      }
-
-      event.preventDefault();
-
-      if (form.dataset.isSubmittingFlocage === 'true') {
-        return;
-      }
-
-      form.dataset.isSubmittingFlocage = 'true';
-
-      addProductWithFlocage(form).catch(function() {
-        form.dataset.isSubmittingFlocage = 'false';
-        alert('Impossible d ajouter le flocage au panier. Reessaie.');
-      });
-    }, true);
-
-    document.querySelectorAll('form[is="product-form"]').forEach(function(form) {
-      updatePaymentButtonVisibility(form);
-    });
+    document.querySelectorAll('[data-flocage-root]').forEach(syncFlocage);
   })();
 </script>
