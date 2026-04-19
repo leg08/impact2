@@ -57,6 +57,15 @@
             "size_chart_page": ""
           }
         },
+        "flocage_module_rLecQ9": {
+          "type": "flocage_module",
+          "settings": {
+            "title": "Flocage",
+            "button_label": "Ajouter un flocage",
+            "input_label": "Texte du flocage",
+            "placeholder": "Ex: MBAPPE 10"
+          }
+        },
         "liquid_iLehtB": {
           "type": "liquid",
           "settings": {
@@ -127,6 +136,7 @@
         "price",
         "rating",
         "variant_picker",
+        "flocage_module_rLecQ9",
         "liquid_iLehtB",
         "liquid_FzeW8t",
         "quantity_selector",
