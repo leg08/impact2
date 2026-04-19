@@ -307,30 +307,54 @@ Supported variables
             {%- render 'inventory', variant: product.selected_or_first_available_variant, low_threshold: block.settings.low_inventory_threshold, form_id: product_form_id -%}
           </div>
 
-        {%- when 'buy_buttons' -%}
-          {%- assign main_form_exists = true -%}
-          {%- assign flocage_price = 490 -%}
-          {%- assign selected_variant = product.selected_or_first_available_variant -%}
+        {%- when 'flocage_module' -%}
+          {%- liquid
+            assign hide_flocage = false
+            assign product_type_downcase = product.type | downcase
+            assign product_title_downcase = product.title | downcase
 
-          {%- if selected_variant != nil -%}
-            {%- assign flocage_total_price = selected_variant.price | plus: flocage_price -%}
-          {%- else -%}
-            {%- assign flocage_total_price = flocage_price -%}
-          {%- endif -%}
+            if product_type_downcase contains 'chaussure' or product_type_downcase contains 'crampon'
+              assign hide_flocage = true
+            endif
 
-          {%- if request.page_type != 'password' -%}
+            if product_title_downcase contains 'chaussure' or product_title_downcase contains 'crampon'
+              assign hide_flocage = true
+            endif
+          -%}
+
+          {%- unless hide_flocage -%}
+            {%- for tag in product.tags -%}
+              {%- assign tag_downcase = tag | downcase -%}
+
+              {%- if tag_downcase contains 'chaussure' or tag_downcase contains 'crampon' -%}
+                {%- assign hide_flocage = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- unless hide_flocage -%}
+            {%- assign flocage_price = 490 -%}
+            {%- assign selected_variant = product.selected_or_first_available_variant -%}
+
+            {%- if selected_variant != nil -%}
+              {%- assign flocage_total_price = selected_variant.price | plus: flocage_price -%}
+            {%- else -%}
+              {%- assign flocage_total_price = flocage_price -%}
+            {%- endif -%}
+
             <style>
               .product-info__flocage {
-                margin-bottom: 1rem;
+                margin-block: 0.25rem;
               }
 
-              .flocage-option {
+              .flocage-module {
                 padding: 1rem;
                 border: 1px solid rgba(0, 0, 0, 0.12);
                 border-radius: 12px;
               }
 
-              .flocage-option__header {
+              .flocage-module__header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -338,25 +362,25 @@ Supported variables
                 margin-bottom: 0.75rem;
               }
 
-              .flocage-option__title {
+              .flocage-module__title {
                 margin: 0;
                 font-size: 1rem;
                 font-weight: 600;
               }
 
-              .flocage-option__price {
+              .flocage-module__price {
                 font-size: 0.95rem;
                 font-weight: 600;
                 white-space: nowrap;
               }
 
-              .flocage-option__toggle {
+              .flocage-module__toggle {
                 position: absolute;
                 opacity: 0;
                 pointer-events: none;
               }
 
-              .flocage-option__button {
+              .flocage-module__button {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -374,28 +398,28 @@ Supported variables
                 transition: background 0.2s ease, border-color 0.2s ease;
               }
 
-              .flocage-option__toggle:checked + .flocage-option__button {
+              .flocage-module__toggle:checked + .flocage-module__button {
                 background: #0f766e;
                 border-color: #0f766e;
               }
 
-              .flocage-option__content {
+              .flocage-module__content {
                 display: none;
                 margin-top: 0.9rem;
               }
 
-              .flocage-option__toggle:checked + .flocage-option__button + .flocage-option__content {
+              .flocage-module__toggle:checked + .flocage-module__button + .flocage-module__content {
                 display: block;
               }
 
-              .flocage-option__label {
+              .flocage-module__label {
                 display: block;
                 margin-bottom: 0.45rem;
                 font-size: 0.9rem;
                 font-weight: 500;
               }
 
-              .flocage-option__input {
+              .flocage-module__input {
                 width: 100%;
                 min-height: 46px;
                 padding: 0.8rem 0.95rem;
@@ -406,13 +430,13 @@ Supported variables
                 box-sizing: border-box;
               }
 
-              .flocage-option__summary {
+              .flocage-module__summary {
                 margin-top: 0.9rem;
                 padding-top: 0.9rem;
                 border-top: 1px solid rgba(0, 0, 0, 0.08);
               }
 
-              .flocage-option__summary-line {
+              .flocage-module__summary-line {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -420,44 +444,47 @@ Supported variables
                 font-size: 0.92rem;
               }
 
-              .flocage-option__summary-line + .flocage-option__summary-line {
+              .flocage-module__summary-line + .flocage-module__summary-line {
                 margin-top: 0.35rem;
               }
 
-              .flocage-option__summary-line strong {
+              .flocage-module__summary-line strong {
                 font-weight: 600;
               }
             </style>
 
             <div class="product-info__flocage">
-              <div class="flocage-option" data-flocage-root>
-                <div class="flocage-option__header">
-                  <p class="flocage-option__title">Flocage</p>
-                  <span class="flocage-option__price">+ {{ flocage_price | money }}</span>
+              <div class="flocage-module" data-flocage-root>
+                <div class="flocage-module__header">
+                  <p class="flocage-module__title">{{ block.settings.title }}</p>
+                  <span class="flocage-module__price">+ {{ flocage_price | money }}</span>
                 </div>
 
                 <input
                   type="checkbox"
                   id="{{ product_form_id }}-flocage-toggle"
-                  class="flocage-option__toggle"
+                  class="flocage-module__toggle"
                   name="properties[Flocage]"
                   value="Oui"
                   form="{{ product_form_id }}"
                   data-flocage-toggle
                 >
 
-                <label for="{{ product_form_id }}-flocage-toggle" class="flocage-option__button">
-                  Ajouter un flocage
+                <label for="{{ product_form_id }}-flocage-toggle" class="flocage-module__button">
+                  {{ block.settings.button_label }}
                 </label>
 
-                <div class="flocage-option__content">
-                  <label for="{{ product_form_id }}-flocage-text" class="flocage-option__label">Texte du flocage</label>
+                <div class="flocage-module__content">
+                  <label for="{{ product_form_id }}-flocage-text" class="flocage-module__label">
+                    {{ block.settings.input_label }}
+                  </label>
+
                   <input
                     type="text"
                     id="{{ product_form_id }}-flocage-text"
-                    class="flocage-option__input"
+                    class="flocage-module__input"
                     name="properties[Texte flocage]"
-                    placeholder="Ex: MBAPPE 10"
+                    placeholder="{{ block.settings.placeholder }}"
                     form="{{ product_form_id }}"
                     disabled
                     data-flocage-text
@@ -472,8 +499,8 @@ Supported variables
                     data-flocage-supplement
                   >
 
-                  <div class="flocage-option__summary">
-                    <div class="flocage-option__summary-line" data-flocage-base-line>
+                  <div class="flocage-module__summary">
+                    <div class="flocage-module__summary-line" data-flocage-base-line>
                       <span>Prix du produit</span>
                       <strong>
                         {%- if selected_variant != nil -%}
@@ -484,7 +511,7 @@ Supported variables
                       </strong>
                     </div>
 
-                    <div class="flocage-option__summary-line" data-flocage-total-line hidden>
+                    <div class="flocage-module__summary-line" data-flocage-total-line hidden>
                       <span>Prix avec flocage</span>
                       <strong>{{ flocage_total_price | money }}</strong>
                     </div>
@@ -529,8 +556,8 @@ Supported variables
                   }
                 }
 
-                if (!window.flocageOptionBound) {
-                  window.flocageOptionBound = true;
+                if (!window.flocageModuleBound) {
+                  window.flocageModuleBound = true;
 
                   document.addEventListener('change', function(event) {
                     if (!event.target.matches('[data-flocage-toggle]')) {
@@ -548,7 +575,12 @@ Supported variables
                 document.querySelectorAll('[data-flocage-root]').forEach(syncFlocage);
               })();
             </script>
+          {%- endunless -%}
 
+        {%- when 'buy_buttons' -%}
+          {%- assign main_form_exists = true -%}
+
+          {%- if request.page_type != 'password' -%}
             <div class="product-info__buy-buttons">
               {%- render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: block.settings.show_payment_button, show_gift_card_recipient: block.settings.show_gift_card_recipient, atc_button_background: block.settings.atc_button_background, atc_button_text_color: block.settings.atc_button_text_color, payment_button_background: block.settings.payment_button_background, payment_button_text_color: block.settings.payment_button_text_color -%}
             </div>
