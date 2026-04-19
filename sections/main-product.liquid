@@ -48,8 +48,8 @@
         {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
       {%- endif -%}
 
-      {%- render 'product-info', 
-        product: product, 
+      {%- render 'product-info',
+        product: product,
         update_url: true,
         product_form_id: product_form_id,
         context: 'main_product'
@@ -731,6 +731,41 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "max": 100,
           "step": 1,
           "default": 0
+        }
+      ]
+    },
+    {
+      "type": "flocage_module",
+      "name": "Flocage",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Ce bloc est masque automatiquement pour les chaussures et les crampons."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "Flocage"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texte du bouton",
+          "default": "Ajouter un flocage"
+        },
+        {
+          "type": "text",
+          "id": "input_label",
+          "label": "Label du champ",
+          "default": "Texte du flocage"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder",
+          "default": "Ex: MBAPPE 10"
         }
       ]
     },
@@ -1717,7 +1752,7 @@ quick buy information in a template, that will be extracted in JS, but ensure it
       "default": "carousel_thumbnails_left"
     },
     {
-      "type":"select",
+      "type": "select",
       "id": "mobile_media_size",
       "label": "Mobile media size",
       "options": [
