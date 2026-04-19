@@ -2,6 +2,22 @@
 ----------------------------------------------------------------------------------------------------------------------
 BUY BUTTONS
 ----------------------------------------------------------------------------------------------------------------------
+
+This component is used to show the buy buttons
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product from which to show the buttons
+* show_payment_button: if we show or not the dynamic checkout button
+* show_gift_card_recipient: for gift card products, an optional message/email to be sent to the recipient
+* button_size: the size of the button (default to xl if none is passed)
+* atc_button_background: the background of the ATC button
+* atc_button_text_color: the text color of the ATC button
+* payment_button_background: the custom dynamic checkout button background
+* payment_button_text_color: the custom dynamic checkout button text color
+* form_id: if specified, define the form ID linked to this input
 {%- endcomment -%}
 
 {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
@@ -13,44 +29,16 @@ BUY BUTTONS
   {%- assign show_payment_button = false -%}
 {%- endif -%}
 
-{%- liquid
-  assign hide_flocage = false
-  assign product_type_downcase = product.type | downcase
-  assign product_title_downcase = product.title | downcase
-
-  if product_type_downcase contains 'chaussure' or product_type_downcase contains 'crampon'
-    assign hide_flocage = true
-  endif
-
-  if product_title_downcase contains 'chaussure' or product_title_downcase contains 'crampon'
-    assign hide_flocage = true
-  endif
--%}
-
-{%- unless hide_flocage -%}
-  {%- for tag in product.tags -%}
-    {%- assign tag_downcase = tag | downcase -%}
-
-    {%- if tag_downcase contains 'chaussure' or tag_downcase contains 'crampon' -%}
-      {%- assign hide_flocage = true -%}
-      {%- break -%}
-    {%- endif -%}
-  {%- endfor -%}
-{%- endunless -%}
-
-{%- assign flocage_price = 490 -%}
-{%- assign selected_variant = product.selected_or_first_available_variant -%}
-
 {%- form 'product', product, is: 'product-form', id: form_id -%}
-  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ selected_variant.id }}">
+  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
   {%- assign button_disabled = false -%}
   {%- assign button_size = button_size | default: 'xl' -%}
 
-  {%- if selected_variant == nil -%}
+  {%- if product.selected_or_first_available_variant == nil -%}
     {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
     {%- assign button_disabled = true -%}
-  {%- elsif selected_variant.available -%}
+  {%- elsif product.selected_or_first_available_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
       {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
     {%- else -%}
@@ -88,158 +76,84 @@ BUY BUTTONS
       </gift-card-recipient>
     {%- endif -%}
 
-    {%- unless hide_flocage -%}
-      <style>
-        .flocage-option {
-          padding: 1rem;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          border-radius: 12px;
-        }
+    <style>
+      .flocage-option {
+        margin-bottom: 0.75rem;
+      }
 
-        .flocage-option__header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-          margin-bottom: 0.75rem;
-        }
+      .flocage-option__title {
+        margin: 0 0 0.5rem;
+        font-weight: 600;
+      }
 
-        .flocage-option__title {
-          margin: 0;
-          font-size: 1rem;
-          font-weight: 600;
-        }
+      .flocage-option__checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
 
-        .flocage-option__price {
-          font-size: 0.95rem;
-          font-weight: 600;
-          white-space: nowrap;
-        }
+      .flocage-option__button {
+        display: inline-block;
+        padding: 12px 18px;
+        border: 1px solid #111;
+        background: #111;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+      }
 
-        .flocage-option__toggle {
-          position: absolute;
-          opacity: 0;
-          pointer-events: none;
-        }
+      .flocage-option__field {
+        display: none;
+        margin-top: 12px;
+      }
 
-        .flocage-option__button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          min-height: 48px;
-          padding: 0.9rem 1rem;
-          border: 1px solid #111;
-          border-radius: 999px;
-          background: #111;
-          color: #fff;
-          cursor: pointer;
-          font-size: 0.95rem;
-          font-weight: 600;
-          text-align: center;
-          transition: background 0.2s ease, border-color 0.2s ease;
-        }
+      .flocage-option__checkbox:checked + .flocage-option__button + .flocage-option__field {
+        display: block;
+      }
 
-        .flocage-option__toggle:checked + .flocage-option__button {
-          background: #0f766e;
-          border-color: #0f766e;
-        }
+      .flocage-option__field label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
 
-        .flocage-option__content {
-          display: none;
-          margin-top: 0.9rem;
-        }
+      .flocage-option__field input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+    </style>
 
-        .flocage-option__toggle:checked + .flocage-option__button + .flocage-option__content {
-          display: block;
-        }
+    <div class="flocage-option">
+      <p class="flocage-option__title">Flocage</p>
 
-        .flocage-option__label {
-          display: block;
-          margin-bottom: 0.45rem;
-          font-size: 0.9rem;
-          font-weight: 500;
-        }
+      <input
+        type="checkbox"
+        id="flocage-toggle-{{ product.id }}-{{ section.id }}"
+        class="flocage-option__checkbox"
+        name="properties[Flocage]"
+        value="Oui"
+      >
 
-        .flocage-option__input {
-          width: 100%;
-          min-height: 46px;
-          padding: 0.8rem 0.95rem;
-          border: 1px solid #d4d4d8;
-          border-radius: 10px;
-          background: #fff;
-          color: #111;
-          box-sizing: border-box;
-        }
+      <label for="flocage-toggle-{{ product.id }}-{{ section.id }}" class="flocage-option__button">
+        Ajouter un flocage
+      </label>
 
-        .flocage-option__summary {
-          margin-top: 0.9rem;
-          padding-top: 0.9rem;
-          border-top: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .flocage-option__summary-line {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-          font-size: 0.92rem;
-        }
-
-        .flocage-option__summary-line + .flocage-option__summary-line {
-          margin-top: 0.35rem;
-        }
-
-        .flocage-option__summary-line strong {
-          font-weight: 600;
-        }
-      </style>
-
-      <div class="flocage-option" data-flocage-root data-base-price="{{ selected_variant.price | default: 0 }}" data-flocage-price="{{ flocage_price }}">
-        <div class="flocage-option__header">
-          <p class="flocage-option__title">Flocage</p>
-          <span class="flocage-option__price">+ {{ flocage_price | money }}</span>
-        </div>
-
+      <div class="flocage-option__field">
+        <label for="flocage-text-{{ product.id }}-{{ section.id }}">Texte du flocage</label>
         <input
-          type="checkbox"
-          id="{{ form_id }}-flocage-toggle"
-          class="flocage-option__toggle"
-          name="properties[Flocage]"
-          value="Oui"
-          data-flocage-toggle
+          type="text"
+          id="flocage-text-{{ product.id }}-{{ section.id }}"
+          name="properties[Texte flocage]"
+          placeholder="Ex : MBAPPE 10"
         >
-
-        <label for="{{ form_id }}-flocage-toggle" class="flocage-option__button">
-          Ajouter un flocage
-        </label>
-
-        <div class="flocage-option__content">
-          <label for="{{ form_id }}-flocage-text" class="flocage-option__label">Texte du flocage</label>
-          <input
-            type="text"
-            id="{{ form_id }}-flocage-text"
-            class="flocage-option__input"
-            name="properties[Texte flocage]"
-            placeholder="Ex: MBAPPE 10"
-            disabled
-            data-flocage-text
-          >
-
-          <div class="flocage-option__summary">
-            <div class="flocage-option__summary-line" data-flocage-base-line>
-              <span>Prix du produit</span>
-              <strong>{{ selected_variant.price | default: 0 | money }}</strong>
-            </div>
-
-            <div class="flocage-option__summary-line" data-flocage-total-line hidden>
-              <span>Prix avec flocage</span>
-              <strong>{{ selected_variant.price | default: 0 | plus: flocage_price | money }}</strong>
-            </div>
-          </div>
-        </div>
       </div>
-    {%- endunless -%}
+    </div>
 
     <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
       {%- render 'button', content: button_content, type: 'submit', size: button_size, disabled: button_disabled, secondary: show_payment_button, subdued: button_disabled, background: atc_button_background, text_color: atc_button_text_color -%}
@@ -249,7 +163,7 @@ BUY BUTTONS
 
         <style>
           #{{ form_id }} .shopify-payment-button {
-            {%- unless selected_variant.available -%}
+            {%- unless product.selected_or_first_available_variant.available -%}
               display: none;
             {%- endunless -%}
 
@@ -266,102 +180,3 @@ BUY BUTTONS
     </buy-buttons>
   </div>
 {%- endform -%}
-
-<script>
-  (function() {
-    function formatMoneyFromShopify(cents) {
-      if (window.Shopify && typeof window.Shopify.formatMoney === 'function') {
-        return window.Shopify.formatMoney(cents, {{ shop.money_format | json }});
-      }
-
-      return (cents / 100).toFixed(2).replace('.', ',') + ' EUR';
-    }
-
-    function getMainPriceContainer() {
-      return document.querySelector('.product-info__price .price-list')
-        || document.querySelector('.product-info__price')
-        || document.querySelector('.price-list');
-    }
-
-    function getPriceTargets(container) {
-      if (!container) {
-        return [];
-      }
-
-      var candidates = container.querySelectorAll('.price, .price-list__current, .price-item--regular, .text-lg, sale-price, compare-at-price');
-      if (candidates.length > 0) {
-        return Array.prototype.slice.call(candidates);
-      }
-
-      return [container];
-    }
-
-    function syncFlocage(root) {
-      var toggle = root.querySelector('[data-flocage-toggle]');
-      var textInput = root.querySelector('[data-flocage-text]');
-      var baseLine = root.querySelector('[data-flocage-base-line]');
-      var totalLine = root.querySelector('[data-flocage-total-line]');
-      var mainPriceContainer = getMainPriceContainer();
-
-      if (!toggle) {
-        return;
-      }
-
-      var checked = toggle.checked;
-      var basePrice = parseInt(root.getAttribute('data-base-price') || '0', 10);
-      var flocagePrice = parseInt(root.getAttribute('data-flocage-price') || '0', 10);
-      var totalPrice = checked ? basePrice + flocagePrice : basePrice;
-
-      if (textInput) {
-        textInput.disabled = !checked;
-
-        if (!checked) {
-          textInput.value = '';
-        }
-      }
-
-      if (baseLine) {
-        baseLine.hidden = checked;
-      }
-
-      if (totalLine) {
-        totalLine.hidden = !checked;
-        var strong = totalLine.querySelector('strong');
-        if (strong) {
-          strong.textContent = formatMoneyFromShopify(totalPrice);
-        }
-      }
-
-      var priceTargets = getPriceTargets(mainPriceContainer);
-      priceTargets.forEach(function(target) {
-        if (!target.hasAttribute('data-original-price-html')) {
-          target.setAttribute('data-original-price-html', target.innerHTML);
-        }
-
-        if (checked) {
-          target.textContent = formatMoneyFromShopify(totalPrice);
-        } else {
-          target.innerHTML = target.getAttribute('data-original-price-html');
-        }
-      });
-    }
-
-    if (!window.flocageVisualPriceBound) {
-      window.flocageVisualPriceBound = true;
-
-      document.addEventListener('change', function(event) {
-        if (!event.target.matches('[data-flocage-toggle]')) {
-          return;
-        }
-
-        var root = event.target.closest('[data-flocage-root]');
-
-        if (root) {
-          syncFlocage(root);
-        }
-      });
-    }
-
-    document.querySelectorAll('[data-flocage-root]').forEach(syncFlocage);
-  })();
-</script>
