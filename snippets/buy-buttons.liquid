@@ -26,7 +26,7 @@ Supported variables:
   {%- assign show_payment_button = false -%}
 {%- endif -%}
 
-{%- form 'product', product, is: 'product-form', id: form_id -%}
+{%- form 'product', product, is: 'product-form', id: form_id, data-flocage-addon-variant-id: '59381501558865', data-product-title: product.title -%}
   <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
   {%- assign button_disabled = false -%}
@@ -98,3 +98,140 @@ Supported variables:
     </buy-buttons>
   </div>
 {%- endform -%}
+
+<script>
+  (function() {
+    if (window.flocageAddonBound) {
+      return;
+    }
+
+    window.flocageAddonBound = true;
+
+    function getFlocageElements(form) {
+      return {
+        toggle: document.getElementById(form.id + '-flocage-toggle'),
+        textInput: document.getElementById(form.id + '-flocage-text'),
+        paymentButton: form.querySelector('.shopify-payment-button')
+      };
+    }
+
+    function updatePaymentButtonVisibility(form) {
+      var elements = getFlocageElements(form);
+
+      if (!elements.paymentButton || !elements.toggle) {
+        return;
+      }
+
+      elements.paymentButton.style.display = elements.toggle.checked ? 'none' : '';
+    }
+
+    function extractProperties(formData) {
+      var properties = {};
+
+      formData.forEach(function(value, key) {
+        if (key.indexOf('properties[') !== 0) {
+          return;
+        }
+
+        var propertyName = key.replace('properties[', '').replace(']', '');
+        properties[propertyName] = value;
+      });
+
+      return properties;
+    }
+
+    async function addProductWithFlocage(form) {
+      var addonVariantId = form.dataset.flocageAddonVariantId;
+      var formData = new FormData(form);
+      var mainVariantId = formData.get('id');
+      var quantity = parseInt(formData.get('quantity') || '1', 10);
+      var flocageTextInput = document.getElementById(form.id + '-flocage-text');
+      var flocageText = flocageTextInput ? flocageTextInput.value.trim() : '';
+      var properties = extractProperties(formData);
+
+      if (!mainVariantId || !addonVariantId) {
+        throw new Error('Missing variant id');
+      }
+
+      var items = [
+        {
+          id: Number(mainVariantId),
+          quantity: quantity,
+          properties: properties
+        },
+        {
+          id: Number(addonVariantId),
+          quantity: quantity,
+          properties: {
+            '_Addon': 'Flocage',
+            '_Produit lie': form.dataset.productTitle || 'Produit',
+            'Texte flocage': flocageText
+          }
+        }
+      ];
+
+      if (formData.get('selling_plan')) {
+        items[0].selling_plan = formData.get('selling_plan');
+      }
+
+      var response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ items: items })
+      });
+
+      if (!response.ok) {
+        throw new Error('Cart add failed');
+      }
+
+      window.location.href = '/cart';
+    }
+
+    document.addEventListener('change', function(event) {
+      if (!event.target.id || event.target.id.indexOf('-flocage-toggle') === -1) {
+        return;
+      }
+
+      var formId = event.target.id.replace('-flocage-toggle', '');
+      var form = document.getElementById(formId);
+
+      if (form) {
+        updatePaymentButtonVisibility(form);
+      }
+    });
+
+    document.addEventListener('submit', function(event) {
+      var form = event.target;
+
+      if (!form.matches('form[is="product-form"]')) {
+        return;
+      }
+
+      var elements = getFlocageElements(form);
+
+      if (!elements.toggle || !elements.toggle.checked) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (form.dataset.isSubmittingFlocage === 'true') {
+        return;
+      }
+
+      form.dataset.isSubmittingFlocage = 'true';
+
+      addProductWithFlocage(form).catch(function() {
+        form.dataset.isSubmittingFlocage = 'false';
+        alert('Impossible d ajouter le flocage au panier. Reessaie.');
+      });
+    }, true);
+
+    document.querySelectorAll('form[is="product-form"]').forEach(function(form) {
+      updatePaymentButtonVisibility(form);
+    });
+  })();
+</script>
