@@ -100,9 +100,6 @@ Supported variables
             </variant-sku>
           {%- endif -%}
 
-        {%- when 'badges' -%}
-          {%- render 'product-badges', product: product, context: 'product', types: 'custom', class: 'product-info__badge-list' -%}
-
         {%- when 'price' -%}
           {%- if product.selected_or_first_available_variant != nil -%}
             <div class="product-info__price">
