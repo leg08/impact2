@@ -5,19 +5,16 @@ BUY BUTTONS
 
 This component is used to show the buy buttons
 
-********************************************
-Supported variables
-********************************************
-
-* product: the product from which to show the buttons
-* show_payment_button: if we show or not the dynamic checkout button
-* show_gift_card_recipient: for gift card products, an optional message/email to be sent to the recipient
-* button_size: the size of the button (default to xl if none is passed)
-* atc_button_background: the background of the ATC button
-* atc_button_text_color: the text color of the ATC button
-* payment_button_background: the custom dynamic checkout button background
-* payment_button_text_color: the custom dynamic checkout button text color
-* form_id: if specified, define the form ID linked to this input
+Supported variables:
+- product
+- show_payment_button
+- show_gift_card_recipient
+- button_size
+- atc_button_background
+- atc_button_text_color
+- payment_button_background
+- payment_button_text_color
+- form_id
 {%- endcomment -%}
 
 {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
@@ -78,11 +75,11 @@ Supported variables
 
     <style>
       .flocage-option {
-        margin-bottom: 0.75rem;
+        margin-bottom: 16px;
       }
 
       .flocage-option__title {
-        margin: 0 0 0.5rem;
+        margin: 0 0 8px;
         font-weight: 600;
       }
 
@@ -134,23 +131,23 @@ Supported variables
 
       <input
         type="checkbox"
-        id="flocage-toggle-{{ product.id }}-{{ section.id }}"
+        id="flocage-toggle-{{ product.id }}"
         class="flocage-option__checkbox"
         name="properties[Flocage]"
         value="Oui"
       >
 
-      <label for="flocage-toggle-{{ product.id }}-{{ section.id }}" class="flocage-option__button">
+      <label for="flocage-toggle-{{ product.id }}" class="flocage-option__button">
         Ajouter un flocage
       </label>
 
       <div class="flocage-option__field">
-        <label for="flocage-text-{{ product.id }}-{{ section.id }}">Texte du flocage</label>
+        <label for="flocage-text-{{ product.id }}">Texte du flocage</label>
         <input
           type="text"
-          id="flocage-text-{{ product.id }}-{{ section.id }}"
+          id="flocage-text-{{ product.id }}"
           name="properties[Texte flocage]"
-          placeholder="Ex : MBAPPE 10"
+          placeholder="Ex: MBAPPE 10"
         >
       </div>
     </div>
