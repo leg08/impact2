@@ -140,12 +140,12 @@ BUY BUTTONS
           width: 52px;
           height: 30px;
           flex: 0 0 auto;
+          cursor: pointer;
         }
 
         .po-switch-slider {
           position: absolute;
           inset: 0;
-          cursor: pointer;
           background-color: #d4d4d8;
           transition: 0.3s ease;
         }
@@ -157,7 +157,7 @@ BUY BUTTONS
           width: 22px;
           left: 4px;
           bottom: 4px;
-          background-color: #fff;
+          background-color: #ffffff;
           transition: 0.3s ease;
         }
 
@@ -199,8 +199,8 @@ BUY BUTTONS
           padding: 0.8rem 0.95rem;
           border: 1px solid #d4d4d8;
           border-radius: 10px;
-          background: #fff;
-          color: #111;
+          background: #ffffff;
+          color: #111111;
           box-sizing: border-box;
         }
 
@@ -227,7 +227,12 @@ BUY BUTTONS
         }
       </style>
 
-      <div class="flocage-option" data-flocage-root data-base-price="{{ selected_variant.price | default: 0 }}" data-flocage-price="{{ flocage_price }}">
+      <div
+        class="flocage-option"
+        data-flocage-root
+        data-base-price="{{ selected_variant.price | default: 0 }}"
+        data-flocage-price="{{ flocage_price }}"
+      >
         <div class="flocage-option__header">
           <p class="flocage-option__title">Flocage</p>
           <span class="flocage-option__price">+ {{ flocage_price | money }}</span>
@@ -245,7 +250,7 @@ BUY BUTTONS
         <div class="flocage-option__switch-row">
           <span class="flocage-option__switch-label">Ajouter un flocage</span>
 
-          <label class="po-switch" for="{{ form_id }}-flocage-toggle">
+          <label class="po-switch" for="{{ form_id }}-flocage-toggle" aria-label="Ajouter un flocage">
             <span class="po-switch-slider po-switch-round"></span>
           </label>
         </div>
@@ -258,6 +263,7 @@ BUY BUTTONS
             class="flocage-option__input"
             name="properties[Texte flocage]"
             placeholder="Ex: MBAPPE 10"
+            maxlength="24"
             disabled
             data-flocage-text
           >
@@ -306,17 +312,17 @@ BUY BUTTONS
 <script>
   (function() {
     function formatMoneyFromShopify(cents) {
-      if (window.Shopify && typeof window.Shopify.formatMoney === 'function') {
+      if (window.Shopify && typeof window.Shopify.formatMoney === "function") {
         return window.Shopify.formatMoney(cents, {{ shop.money_format | json }});
       }
 
-      return (cents / 100).toFixed(2).replace('.', ',') + ' EUR';
+      return (cents / 100).toFixed(2).replace(".", ",") + " EUR";
     }
 
     function getMainPriceContainer() {
-      return document.querySelector('.product-info__price .price-list')
-        || document.querySelector('.product-info__price')
-        || document.querySelector('.price-list');
+      return document.querySelector(".product-info__price .price-list")
+        || document.querySelector(".product-info__price")
+        || document.querySelector(".price-list");
     }
 
     function getPriceTargets(container) {
@@ -324,7 +330,8 @@ BUY BUTTONS
         return [];
       }
 
-      var candidates = container.querySelectorAll('.price, .price-list__current, .price-item--regular, .text-lg, sale-price, compare-at-price');
+      var candidates = container.querySelectorAll(".price, .price-list__current, .price-item--regular, .text-lg, sale-price, compare-at-price");
+
       if (candidates.length > 0) {
         return Array.prototype.slice.call(candidates);
       }
@@ -333,10 +340,10 @@ BUY BUTTONS
     }
 
     function syncFlocage(root) {
-      var toggle = root.querySelector('[data-flocage-toggle]');
-      var textInput = root.querySelector('[data-flocage-text]');
-      var baseLine = root.querySelector('[data-flocage-base-line]');
-      var totalLine = root.querySelector('[data-flocage-total-line]');
+      var toggle = root.querySelector("[data-flocage-toggle]");
+      var textInput = root.querySelector("[data-flocage-text]");
+      var baseLine = root.querySelector("[data-flocage-base-line]");
+      var totalLine = root.querySelector("[data-flocage-total-line]");
       var mainPriceContainer = getMainPriceContainer();
 
       if (!toggle) {
@@ -344,15 +351,15 @@ BUY BUTTONS
       }
 
       var checked = toggle.checked;
-      var basePrice = parseInt(root.getAttribute('data-base-price') || '0', 10);
-      var flocagePrice = parseInt(root.getAttribute('data-flocage-price') || '0', 10);
+      var basePrice = parseInt(root.getAttribute("data-base-price") || "0", 10);
+      var flocagePrice = parseInt(root.getAttribute("data-flocage-price") || "0", 10);
       var totalPrice = checked ? basePrice + flocagePrice : basePrice;
 
       if (textInput) {
         textInput.disabled = !checked;
 
         if (!checked) {
-          textInput.value = '';
+          textInput.value = "";
         }
       }
 
@@ -362,7 +369,7 @@ BUY BUTTONS
 
       if (totalLine) {
         totalLine.hidden = !checked;
-        var strong = totalLine.querySelector('strong');
+        var strong = totalLine.querySelector("strong");
 
         if (strong) {
           strong.textContent = formatMoneyFromShopify(totalPrice);
@@ -372,14 +379,14 @@ BUY BUTTONS
       var priceTargets = getPriceTargets(mainPriceContainer);
 
       priceTargets.forEach(function(target) {
-        if (!target.hasAttribute('data-original-price-html')) {
-          target.setAttribute('data-original-price-html', target.innerHTML);
+        if (!target.hasAttribute("data-original-price-html")) {
+          target.setAttribute("data-original-price-html", target.innerHTML);
         }
 
         if (checked) {
           target.textContent = formatMoneyFromShopify(totalPrice);
         } else {
-          target.innerHTML = target.getAttribute('data-original-price-html');
+          target.innerHTML = target.getAttribute("data-original-price-html");
         }
       });
     }
@@ -387,12 +394,12 @@ BUY BUTTONS
     if (!window.flocageVisualPriceBound) {
       window.flocageVisualPriceBound = true;
 
-      document.addEventListener('change', function(event) {
-        if (!event.target.matches('[data-flocage-toggle]')) {
+      document.addEventListener("change", function(event) {
+        if (!event.target.matches("[data-flocage-toggle]")) {
           return;
         }
 
-        var root = event.target.closest('[data-flocage-root]');
+        var root = event.target.closest("[data-flocage-root]");
 
         if (root) {
           syncFlocage(root);
@@ -400,6 +407,6 @@ BUY BUTTONS
       });
     }
 
-    document.querySelectorAll('[data-flocage-root]').forEach(syncFlocage);
+    document.querySelectorAll("[data-flocage-root]").forEach(syncFlocage);
   })();
 </script>
