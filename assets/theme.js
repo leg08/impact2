@@ -2660,7 +2660,6 @@ if (!window.customElements.get("product-card")) {
 
 // js/common/product/product-form.js
 var ProductForm = class extends HTMLFormElement {
-var ProductForm = class extends HTMLFormElement {
   #submitting = false;
   constructor() {
     super();
@@ -2678,142 +2677,56 @@ var ProductForm = class extends HTMLFormElement {
       this.reportValidity();
       return;
     }
-
     const submitButtons = Array.from(this.elements).filter((button) => button.type === "submit");
     submitButtons.forEach((submitButton) => {
       submitButton.setAttribute("aria-busy", "true");
     });
-
     let sectionsToBundle = ["variant-added"];
-    document.documentElement.dispatchEvent(
-      new CustomEvent("cart:prepare-bundled-sections", {
-        bubbles: true,
-        detail: { sections: sectionsToBundle }
-      })
-    );
-
+    document.documentElement.dispatchEvent(new CustomEvent("cart:prepare-bundled-sections", { bubbles: true, detail: { sections: sectionsToBundle } }));
     const formData = new FormData(this);
-    const flocageToggle = this.querySelector("[data-flocage-toggle]");
-    const flocageTextInput = this.querySelector("[data-flocage-text]");
-    const addonVariantId = 59383033856081;
-    const shouldAddFlocage = flocageToggle && flocageToggle.checked;
-
+    formData.set("sections", sectionsToBundle.join(","));
+    formData.set("sections_url", `${Shopify.routes.root}variants/${this.id.value}`);
     this.#submitting = true;
-
-    try {
-      let response;
-
-      if (shouldAddFlocage) {
-        const properties = {};
-
-        formData.forEach((value, key) => {
-          if (key.startsWith("properties[")) {
-            const propertyName = key.replace("properties[", "").replace("]", "");
-            properties[propertyName] = value;
-          }
-        });
-
-        const quantity = parseInt(formData.get("quantity") || "1", 10);
-        const mainVariantId = parseInt(formData.get("id"), 10);
-        const sellingPlan = formData.get("selling_plan");
-        const flocageText = flocageTextInput ? flocageTextInput.value.trim() : "";
-
-        const payload = {
-          items: [
-            {
-              id: mainVariantId,
-              quantity,
-              properties
-            },
-            {
-              id: addonVariantId,
-              quantity,
-              properties: {
-                _addon_type: "flocage",
-                _linked_product: document.title,
-                _flocage_text: flocageText
-              }
-            }
-          ],
-          sections: sectionsToBundle.join(","),
-          sections_url: `${Shopify.routes.root}variants/${mainVariantId}`
-        };
-
-        if (sellingPlan) {
-          payload.items[0].selling_plan = sellingPlan;
-        }
-
-        response = await fetch(`${Shopify.routes.root}cart/add.js`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          body: JSON.stringify(payload)
-        });
-      } else {
-        formData.set("sections", sectionsToBundle.join(","));
-        formData.set("sections_url", `${Shopify.routes.root}variants/${this.id.value}`);
-
-        response = await fetch(`${Shopify.routes.root}cart/add.js`, {
-          body: formData,
-          method: "POST",
-          headers: {
-            "X-Requested-With": "XMLHttpRequest"
-          }
-        });
+    const response = await fetch(`${Shopify.routes.root}cart/add.js`, {
+      body: formData,
+      method: "POST",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest"
       }
-
-      const responseJson = await response.json();
-
-      if (response.ok) {
-        if (
-          window.themeVariables.settings.cartType === "page" ||
-          window.themeVariables.settings.pageType === "cart"
-        ) {
-          window.location.href = `${Shopify.routes.root}cart`;
-          return;
-        }
-
-        const cartContent = await (await fetch(`${Shopify.routes.root}cart.js`)).json();
-        cartContent["sections"] = responseJson["sections"];
-
-        this.dispatchEvent(
-          new CustomEvent("variant:add", {
-            bubbles: true,
-            detail: {
-              items: responseJson.hasOwnProperty("items") ? responseJson["items"] : [responseJson],
-              cart: cartContent
-            }
-          })
-        );
-
-        document.documentElement.dispatchEvent(
-          new CustomEvent("cart:change", {
-            bubbles: true,
-            detail: {
-              baseEvent: "variant:add",
-              cart: cartContent
-            }
-          })
-        );
-      } else {
-        this.dispatchEvent(
-          new CustomEvent("cart:error", {
-            bubbles: true,
-            detail: {
-              error: responseJson["description"]
-            }
-          })
-        );
-
-        document.dispatchEvent(new CustomEvent("cart:refresh"));
+    });
+    submitButtons.forEach((submitButton) => {
+      submitButton.removeAttribute("aria-busy");
+    });
+    this.#submitting = false;
+    const responseJson = await response.json();
+    if (response.ok) {
+      if (window.themeVariables.settings.cartType === "page" || window.themeVariables.settings.pageType === "cart") {
+        return window.location.href = `${Shopify.routes.root}cart`;
       }
-    } finally {
-      submitButtons.forEach((submitButton) => {
-        submitButton.removeAttribute("aria-busy");
-      });
-      this.#submitting = false;
+      const cartContent = await (await fetch(`${Shopify.routes.root}cart.js`)).json();
+      cartContent["sections"] = responseJson["sections"];
+      this.dispatchEvent(new CustomEvent("variant:add", {
+        bubbles: true,
+        detail: {
+          items: responseJson.hasOwnProperty("items") ? responseJson["items"] : [responseJson],
+          cart: cartContent
+        }
+      }));
+      document.documentElement.dispatchEvent(new CustomEvent("cart:change", {
+        bubbles: true,
+        detail: {
+          baseEvent: "variant:add",
+          cart: cartContent
+        }
+      }));
+    } else {
+      this.dispatchEvent(new CustomEvent("cart:error", {
+        bubbles: true,
+        detail: {
+          error: responseJson["description"]
+        }
+      }));
+      document.dispatchEvent(new CustomEvent("cart:refresh"));
     }
   }
 };
