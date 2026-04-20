@@ -17,12 +17,17 @@ BUY BUTTONS
   assign hide_flocage = false
   assign product_type_downcase = product.type | downcase
   assign product_title_downcase = product.title | downcase
+  assign product_handle_downcase = product.handle | downcase
 
-  if product_type_downcase contains 'chaussure' or product_type_downcase contains 'crampon'
+  if product_type_downcase contains 'chaussure' or product_type_downcase contains 'chaussures' or product_type_downcase contains 'crampon' or product_type_downcase contains 'crampons'
     assign hide_flocage = true
   endif
 
-  if product_title_downcase contains 'chaussure' or product_title_downcase contains 'crampon'
+  if product_title_downcase contains 'chaussure' or product_title_downcase contains 'chaussures' or product_title_downcase contains 'crampon' or product_title_downcase contains 'crampons'
+    assign hide_flocage = true
+  endif
+
+  if product_handle_downcase contains 'chaussure' or product_handle_downcase contains 'chaussures' or product_handle_downcase contains 'crampon' or product_handle_downcase contains 'crampons'
     assign hide_flocage = true
   endif
 -%}
@@ -31,7 +36,19 @@ BUY BUTTONS
   {%- for tag in product.tags -%}
     {%- assign tag_downcase = tag | downcase -%}
 
-    {%- if tag_downcase contains 'chaussure' or tag_downcase contains 'crampon' -%}
+    {%- if tag_downcase contains 'chaussure' or tag_downcase contains 'chaussures' or tag_downcase contains 'crampon' or tag_downcase contains 'crampons' -%}
+      {%- assign hide_flocage = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endunless -%}
+
+{%- unless hide_flocage -%}
+  {%- for product_collection in product.collections -%}
+    {%- assign collection_title_downcase = product_collection.title | downcase -%}
+    {%- assign collection_handle_downcase = product_collection.handle | downcase -%}
+
+    {%- if collection_title_downcase contains 'crampon' or collection_title_downcase contains 'crampons' or collection_title_downcase contains 'chaussure' or collection_title_downcase contains 'chaussures' or collection_handle_downcase contains 'crampon' or collection_handle_downcase contains 'crampons' or collection_handle_downcase contains 'chaussure' or collection_handle_downcase contains 'chaussures' -%}
       {%- assign hide_flocage = true -%}
       {%- break -%}
     {%- endif -%}
