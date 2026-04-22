@@ -436,6 +436,7 @@
         "item_GciJkW": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Tf_jpg.webp",
             "image_rotation_degrees": -2,
             "subheading": "",
             "title": "KITS ENFANTS",
