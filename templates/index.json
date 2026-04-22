@@ -380,6 +380,7 @@
         "item_HUMB6h": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/2e09d456-da45-4e97-a3a0-97f60723cb79_jpg.webp",
             "image_rotation_degrees": -2,
             "subheading": "",
             "title": "Maillots manches longues",
@@ -395,8 +396,8 @@
       "name": "Multiple images with text",
       "settings": {
         "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
+        "images_layout": "scattered",
+        "collage_images_alignment": "top",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -452,7 +453,7 @@
       "name": "Multiple images with text",
       "settings": {
         "full_width": true,
-        "images_layout": "stacked",
+        "images_layout": "scattered",
         "collage_images_alignment": "middle",
         "background": "",
         "background_gradient": "",
