@@ -170,6 +170,22 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_57_png.webp",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_bqTE8h": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_55_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -184,6 +200,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_59_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -198,6 +215,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_60_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -212,6 +230,22 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_61_png.webp",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_JUCQD3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/Design_sans_titre_62_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -225,19 +259,21 @@
       },
       "block_order": [
         "collection_6LjzeE",
+        "collection_bqTE8h",
         "collection_TC7npw",
         "collection_EVdpKL",
-        "collection_qd93QY"
+        "collection_qd93QY",
+        "collection_JUCQD3"
       ],
       "name": "Collection list",
       "settings": {
         "full_width": true,
         "stack_collections": false,
         "collections_per_row_mobile": "1",
-        "collections_per_row": 4,
+        "collections_per_row": 5,
         "show_progress_bar": false,
         "subheading": "",
-        "title": "Collection list",
+        "title": "Collection",
         "content": "",
         "link_url": "",
         "link_text": "Voir tout",
