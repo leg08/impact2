@@ -15,8 +15,7 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2.png",
-            "mobile_image": "shopify://shop_images/2.png",
+            "image": "shopify://shop_images/bf82b447-2315-41ac-9f1d-41c06a795262.jpg",
             "content_max_width": 760,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -151,7 +150,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_57_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -166,7 +164,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_55_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -181,7 +178,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_59_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -196,7 +192,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_60_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -211,7 +206,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_61_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -226,7 +220,6 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/Design_sans_titre_62_png.webp",
             "subheading": "",
             "title": "",
             "url": "",
@@ -397,7 +390,6 @@
         "item_HUMB6h": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/2e09d456-da45-4e97-a3a0-97f60723cb79_jpg.webp",
             "image_rotation_degrees": -2,
             "subheading": "",
             "title": "Maillots manches longues",
@@ -454,7 +446,6 @@
         "item_GciJkW": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Tf_jpg.webp",
             "image_rotation_degrees": -2,
             "subheading": "",
             "title": "KITS ENFANTS",
