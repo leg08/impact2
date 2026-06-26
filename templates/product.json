@@ -110,23 +110,23 @@
             "page": ""
           }
         },
-        "collapsible_text_KKw7hd": {
+        "collapsible_text_Kii3JJ": {
           "type": "collapsible_text",
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "Matériaux & Entretien",
-            "content": "<ul><li>Laver à l’envers à <strong>30°C<br/>Éviter le sèche-linge</strong> (pour préserver le flocage)</li><li>Ne pas repasser directement sur l’impression / le flocage</li><li>Séchage à l’air libre recommandé</li><li>Laver avec des couleurs similaires</li></ul>",
+            "title": "Spécifications",
+            "content": "<ul><li><strong>Coupe :</strong> standard / unisexe (prend ta taille habituelle)</li><li><strong>Matière :</strong> tissu respirant, léger et agréable à porter</li><li><strong>Flocage :</strong> finition premium, rendu net et durable</li><li><strong>Détails :</strong> écussons + logos intégrés selon le modèle</li><li><strong>Confort : </strong>idéal au quotidien comme pour le sport</li></ul>",
             "page": ""
           }
         },
-        "collapsible_text_tMGr89": {
+        "collapsible_text_yPDdhV": {
           "type": "collapsible_text",
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "2 ACHETÉS, 1 OFFERT !",
-            "content": "<p>Il vous suffit de sélectionner trois t-shirts pour que l’un d’eux soit automatiquement offert dans votre panier.</p>",
+            "title": "Spécifications",
+            "content": "<ul><li><strong>Coupe :</strong> standard / unisexe (prend ta taille habituelle)</li><li><strong>Matière :</strong> tissu respirant, léger et agréable à porter</li><li><strong>Flocage :</strong> finition premium, rendu net et durable</li><li><strong>Détails :</strong> écussons + logos intégrés selon le modèle</li><li><strong>Confort : </strong>idéal au quotidien comme pour le sport</li></ul>",
             "page": ""
           }
         }
@@ -146,8 +146,8 @@
         "buy_buttons",
         "payment_terms",
         "collapsible_text_tpqc6k",
-        "collapsible_text_KKw7hd",
-        "collapsible_text_tMGr89"
+        "collapsible_text_Kii3JJ",
+        "collapsible_text_yPDdhV"
       ],
       "settings": {
         "full_width": true,
