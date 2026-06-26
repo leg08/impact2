@@ -52,6 +52,7 @@
     },
     "scrolling-text": {
       "type": "scrolling-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "text": "2 Achetés = 1 OFFERT",
@@ -93,6 +94,7 @@
     },
     "featured_collection_pgTQ8M": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "collection-2025-2026",
@@ -119,6 +121,7 @@
     },
     "featured_collection_yidKb3": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "collection-2024-2025",
@@ -239,6 +242,7 @@
         "collection_qd93QY",
         "collection_JUCQD3"
       ],
+      "disabled": true,
       "name": "Collection list",
       "settings": {
         "full_width": true,
@@ -260,6 +264,7 @@
     },
     "featured_collection_3aPDXz": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "crampons",
@@ -368,6 +373,7 @@
         "item_UPYDpz",
         "item_aFCM8z"
       ],
+      "disabled": true,
       "name": "Image link blocks",
       "settings": {
         "full_width": false,
@@ -402,6 +408,7 @@
       "block_order": [
         "item_HUMB6h"
       ],
+      "disabled": true,
       "name": "Multiple images with text",
       "settings": {
         "full_width": true,
@@ -416,6 +423,7 @@
     },
     "featured_collection_LDd7nX": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "survetements",
@@ -458,6 +466,7 @@
       "block_order": [
         "item_GciJkW"
       ],
+      "disabled": true,
       "name": "Multiple images with text",
       "settings": {
         "full_width": true,
@@ -472,6 +481,7 @@
     },
     "featured_collection_kbH6hb": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "kits-enfants",
@@ -498,6 +508,7 @@
     },
     "featured_collection_rz6tnV": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "body",
@@ -541,6 +552,7 @@
       "block_order": [
         "1664424181b38582d5-0"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_mobile": true,
