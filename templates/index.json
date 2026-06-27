@@ -15,20 +15,20 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/bf82b447-2315-41ac-9f1d-41c06a795262.jpg",
+            "image": "shopify://shop_images/3FBCACBE-5579-426F-A7F9-3AB3EAD9C672.png",
             "content_max_width": 760,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "INTEMPORELS",
-            "title": "UNIQUE & ÉTHIQUE",
+            "subheading": "",
+            "title": "",
             "heading_tag": "h3",
             "button_text": "DÉCOUVRIR LA BOUTIQUE",
             "button_link": "",
             "text_color": "#000000",
-            "button_background": "#FFFFFF",
+            "button_background": "#ffffff",
             "button_text_color": "#000000",
             "overlay_color": "#000000",
-            "overlay_opacity": 16,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
