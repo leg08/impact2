@@ -22,7 +22,7 @@
             "icon_width": 24,
             "icon_background_type": "none",
             "icon_background": "",
-            "icon_color": "",
+            "icon_color": "#000000",
             "title": "Livraison gratuite",
             "content": "<p>Livraison sous 3 à 5 jours ouvrés après traitement.</p>"
           }
