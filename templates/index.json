@@ -18,7 +18,7 @@
             "image": "shopify://shop_images/Image_generee_Elegance_intemporelle_entre_tradition_et_modernite.png",
             "mobile_image": "shopify://shop_images/Image_generee_Elegance_moderne_et_traditionnelle_en_Dubai.png",
             "content_max_width": 760,
-            "mobile_text_position": "place-self-center text-center",
+            "mobile_text_position": "place-self-end-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "subheading": "",
             "title": "",
