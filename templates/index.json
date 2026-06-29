@@ -16,7 +16,6 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3FBCACBE-5579-426F-A7F9-3AB3EAD9C672.png",
-            "mobile_image": "shopify://shop_images/B11A0037-4222-47D7-AE53-52001FBFB674.png",
             "content_max_width": 760,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -26,8 +25,8 @@
             "button_text": "DÉCOUVRIR LA BOUTIQUE",
             "button_link": "",
             "text_color": "#000000",
-            "button_background": "#BFAC9A",
-            "button_text_color": "#F8F8F8",
+            "button_background": "#bfac9a",
+            "button_text_color": "#f8f8f8",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "background": "",
