@@ -15,7 +15,8 @@
         "slide-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/3FBCACBE-5579-426F-A7F9-3AB3EAD9C672.png",
+            "image": "shopify://shop_images/Image_generee_Elegance_intemporelle_entre_tradition_et_modernite.png",
+            "mobile_image": "shopify://shop_images/Image_generee_Elegance_moderne_et_traditionnelle_en_Dubai.png",
             "content_max_width": 760,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
