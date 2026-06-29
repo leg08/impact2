@@ -75,11 +75,12 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
 <style>
   @media (min-width: 990px) {
-    .slideshow .slideshow__slide-content {
+    .slideshow__slide > div {
       padding-top: 60px;
     }
   }
 </style>
+
   </head>
 
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
