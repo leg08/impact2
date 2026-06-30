@@ -573,36 +573,60 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "item_y4qJmM": {
+          "type": "item",
+          "settings": {
+            "title": "Comment entretenir mon abaya ?",
+            "content": "<p>Nous recommandons un lavage à 30 °C en cycle délicat. Évitez le sèche-linge afin de préserver la qualité du tissu. Un repassage à basse température est conseillé si nécessaire.</p>"
+          }
+        },
+        "item_ktG6XR": {
+          "type": "item",
+          "settings": {
+            "title": "Comment effectuer un retour ?",
+            "content": "<p>Contactez notre service client en indiquant votre numéro de commande. Nous vous communiquerons la procédure de retour ainsi que l’adresse à laquelle renvoyer votre colis.</p>"
+          }
+        },
+        "item_9cUCXd": {
+          "type": "item",
+          "settings": {
+            "title": "Puis-je retourner un article ?",
+            "content": "<p>Oui. Vous disposez d’un délai de 14 jours après réception de votre commande pour effectuer un retour, à condition que l’article soit neuf, non porté, non lavé et dans son emballage d’origine.</p>"
+          }
+        },
         "item_FGYAkF": {
           "type": "item",
           "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "Comment choisir ma taille ?",
+            "content": "<p>Chaque produit dispose d’un guide des tailles détaillé. Nos abayas sont généralement conçues avec une coupe fluide. Si vous hésitez entre deux tailles, nous vous conseillons de choisir votre taille habituelle ou de consulter notre guide des mesures.</p>"
           }
         },
         "item_LkCDh8": {
           "type": "item",
           "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "Les abayas sont-elles opaques ?",
+            "content": "<p>Oui. Nous sélectionnons des tissus de qualité afin d’offrir une excellente opacité. Pour certains modèles de couleur très claire, nous recommandons simplement de porter un sous-vêtement adapté.</p>"
           }
         },
         "item_7N3BG3": {
           "type": "item",
           "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "Quels sont les délais de livraison ?",
+            "content": "<p>Les commandes sont préparées rapidement puis expédiées sous 24 à 48H heures ouvrées. Les délais de livraison varient selon votre pays et le transporteur choisi lors de votre commande.</p>"
           }
         },
         "item_wBHXhF": {
           "type": "item",
           "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
+            "title": "Livrez-vous à l’international ?",
+            "content": "<p>Oui, nous livrons dans de nombreux pays. Les frais et délais de livraison sont calculés automatiquement au moment du paiement.</p>"
           }
         }
       },
       "block_order": [
+        "item_y4qJmM",
+        "item_ktG6XR",
+        "item_9cUCXd",
         "item_FGYAkF",
         "item_LkCDh8",
         "item_7N3BG3",
