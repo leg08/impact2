@@ -573,6 +573,13 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "item_8mX9Nj": {
+          "type": "item",
+          "settings": {
+            "title": "Le paiement est-il sécurisé ?",
+            "content": "<p>Oui. Toutes les transactions sont protégées par un système de paiement sécurisé avec chiffrement des données afin de garantir la confidentialité de vos informations bancaires.</p>"
+          }
+        },
         "item_wgQKjK": {
           "type": "item",
           "settings": {
@@ -652,6 +659,7 @@
         }
       },
       "block_order": [
+        "item_8mX9Nj",
         "item_wgQKjK",
         "item_nLi9cp",
         "item_qDH4M9",
