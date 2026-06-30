@@ -573,32 +573,32 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "item_y4qJmM": {
+        "item_wgQKjK": {
           "type": "item",
           "settings": {
-            "title": "Comment entretenir mon abaya ?",
-            "content": "<p>Nous recommandons un lavage à 30 °C en cycle délicat. Évitez le sèche-linge afin de préserver la qualité du tissu. Un repassage à basse température est conseillé si nécessaire.</p>"
+            "title": "Comment suivre ma commande ?",
+            "content": "<p>Dès l’expédition de votre commande, vous recevrez un e-mail contenant un numéro de suivi vous permettant de suivre votre colis en temps réel.</p>"
           }
         },
-        "item_ktG6XR": {
+        "item_nLi9cp": {
           "type": "item",
           "settings": {
-            "title": "Comment effectuer un retour ?",
-            "content": "<p>Contactez notre service client en indiquant votre numéro de commande. Nous vous communiquerons la procédure de retour ainsi que l’adresse à laquelle renvoyer votre colis.</p>"
+            "title": "Que faire si je reçois un article endommagé ou incorrect ?",
+            "content": "<p>Si votre article présente un défaut ou ne correspond pas à votre commande, contactez notre service client dans les 48 heures suivant la réception en joignant des photos. Une solution adaptée vous sera proposée rapidement.</p>"
           }
         },
-        "item_9cUCXd": {
+        "item_qDH4M9": {
           "type": "item",
           "settings": {
-            "title": "Puis-je retourner un article ?",
-            "content": "<p>Oui. Vous disposez d’un délai de 14 jours après réception de votre commande pour effectuer un retour, à condition que l’article soit neuf, non porté, non lavé et dans son emballage d’origine.</p>"
+            "title": "Les couleurs des produits sont-elles fidèles aux photos ?",
+            "content": "<p>Nous faisons tout notre possible pour représenter fidèlement les couleurs de nos produits. Toutefois, de légères différences peuvent apparaître selon les réglages de votre écran.</p>"
           }
         },
-        "item_FGYAkF": {
+        "item_c9atwH": {
           "type": "item",
           "settings": {
-            "title": "Comment choisir ma taille ?",
-            "content": "<p>Chaque produit dispose d’un guide des tailles détaillé. Nos abayas sont généralement conçues avec une coupe fluide. Si vous hésitez entre deux tailles, nous vous conseillons de choisir votre taille habituelle ou de consulter notre guide des mesures.</p>"
+            "title": "Proposez-vous des nouveautés régulièrement ?",
+            "content": "<p>Oui. Nous ajoutons régulièrement de nouvelles collections afin de vous proposer des modèles élégants, tendance et intemporels.</p>"
           }
         },
         "item_LkCDh8": {
@@ -606,6 +606,13 @@
           "settings": {
             "title": "Les abayas sont-elles opaques ?",
             "content": "<p>Oui. Nous sélectionnons des tissus de qualité afin d’offrir une excellente opacité. Pour certains modèles de couleur très claire, nous recommandons simplement de porter un sous-vêtement adapté.</p>"
+          }
+        },
+        "item_FGYAkF": {
+          "type": "item",
+          "settings": {
+            "title": "Comment choisir ma taille ?",
+            "content": "<p>Chaque produit dispose d’un guide des tailles détaillé. Nos abayas sont généralement conçues avec une coupe fluide. Si vous hésitez entre deux tailles, nous vous conseillons de choisir votre taille habituelle ou de consulter notre guide des mesures.</p>"
           }
         },
         "item_7N3BG3": {
@@ -621,16 +628,41 @@
             "title": "Livrez-vous à l’international ?",
             "content": "<p>Oui, nous livrons dans de nombreux pays. Les frais et délais de livraison sont calculés automatiquement au moment du paiement.</p>"
           }
+        },
+        "item_y4qJmM": {
+          "type": "item",
+          "settings": {
+            "title": "Comment entretenir mon abaya ?",
+            "content": "<p>Nous recommandons un lavage à 30 °C en cycle délicat. Évitez le sèche-linge afin de préserver la qualité du tissu. Un repassage à basse température est conseillé si nécessaire.</p>"
+          }
+        },
+        "item_9cUCXd": {
+          "type": "item",
+          "settings": {
+            "title": "Puis-je retourner un article ?",
+            "content": "<p>Oui. Vous disposez d’un délai de 14 jours après réception de votre commande pour effectuer un retour, à condition que l’article soit neuf, non porté, non lavé et dans son emballage d’origine.</p>"
+          }
+        },
+        "item_ktG6XR": {
+          "type": "item",
+          "settings": {
+            "title": "Comment effectuer un retour ?",
+            "content": "<p>Contactez notre service client en indiquant votre numéro de commande. Nous vous communiquerons la procédure de retour ainsi que l’adresse à laquelle renvoyer votre colis.</p>"
+          }
         }
       },
       "block_order": [
-        "item_y4qJmM",
-        "item_ktG6XR",
-        "item_9cUCXd",
-        "item_FGYAkF",
+        "item_wgQKjK",
+        "item_nLi9cp",
+        "item_qDH4M9",
+        "item_c9atwH",
         "item_LkCDh8",
+        "item_FGYAkF",
         "item_7N3BG3",
-        "item_wBHXhF"
+        "item_wBHXhF",
+        "item_y4qJmM",
+        "item_9cUCXd",
+        "item_ktG6XR"
       ],
       "settings": {
         "full_width": true,
