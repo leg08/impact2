@@ -573,34 +573,6 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "item_8mX9Nj": {
-          "type": "item",
-          "settings": {
-            "title": "Le paiement est-il sécurisé ?",
-            "content": "<p>Oui. Toutes les transactions sont protégées par un système de paiement sécurisé avec chiffrement des données afin de garantir la confidentialité de vos informations bancaires.</p>"
-          }
-        },
-        "item_wgQKjK": {
-          "type": "item",
-          "settings": {
-            "title": "Comment suivre ma commande ?",
-            "content": "<p>Dès l’expédition de votre commande, vous recevrez un e-mail contenant un numéro de suivi vous permettant de suivre votre colis en temps réel.</p>"
-          }
-        },
-        "item_nLi9cp": {
-          "type": "item",
-          "settings": {
-            "title": "Que faire si je reçois un article endommagé ou incorrect ?",
-            "content": "<p>Si votre article présente un défaut ou ne correspond pas à votre commande, contactez notre service client dans les 48 heures suivant la réception en joignant des photos. Une solution adaptée vous sera proposée rapidement.</p>"
-          }
-        },
-        "item_qDH4M9": {
-          "type": "item",
-          "settings": {
-            "title": "Les couleurs des produits sont-elles fidèles aux photos ?",
-            "content": "<p>Nous faisons tout notre possible pour représenter fidèlement les couleurs de nos produits. Toutefois, de légères différences peuvent apparaître selon les réglages de votre écran.</p>"
-          }
-        },
         "item_c9atwH": {
           "type": "item",
           "settings": {
@@ -656,13 +628,37 @@
             "title": "Comment effectuer un retour ?",
             "content": "<p>Contactez notre service client en indiquant votre numéro de commande. Nous vous communiquerons la procédure de retour ainsi que l’adresse à laquelle renvoyer votre colis.</p>"
           }
+        },
+        "item_qDH4M9": {
+          "type": "item",
+          "settings": {
+            "title": "Les couleurs des produits sont-elles fidèles aux photos ?",
+            "content": "<p>Nous faisons tout notre possible pour représenter fidèlement les couleurs de nos produits. Toutefois, de légères différences peuvent apparaître selon les réglages de votre écran.</p>"
+          }
+        },
+        "item_nLi9cp": {
+          "type": "item",
+          "settings": {
+            "title": "Que faire si je reçois un article endommagé ou incorrect ?",
+            "content": "<p>Si votre article présente un défaut ou ne correspond pas à votre commande, contactez notre service client dans les 48 heures suivant la réception en joignant des photos. Une solution adaptée vous sera proposée rapidement.</p>"
+          }
+        },
+        "item_wgQKjK": {
+          "type": "item",
+          "settings": {
+            "title": "Comment suivre ma commande ?",
+            "content": "<p>Dès l’expédition de votre commande, vous recevrez un e-mail contenant un numéro de suivi vous permettant de suivre votre colis en temps réel.</p>"
+          }
+        },
+        "item_8mX9Nj": {
+          "type": "item",
+          "settings": {
+            "title": "Le paiement est-il sécurisé ?",
+            "content": "<p>Oui. Toutes les transactions sont protégées par un système de paiement sécurisé avec chiffrement des données afin de garantir la confidentialité de vos informations bancaires.</p>"
+          }
         }
       },
       "block_order": [
-        "item_8mX9Nj",
-        "item_wgQKjK",
-        "item_nLi9cp",
-        "item_qDH4M9",
         "item_c9atwH",
         "item_LkCDh8",
         "item_FGYAkF",
@@ -670,7 +666,11 @@
         "item_wBHXhF",
         "item_y4qJmM",
         "item_9cUCXd",
-        "item_ktG6XR"
+        "item_ktG6XR",
+        "item_qDH4M9",
+        "item_nLi9cp",
+        "item_wgQKjK",
+        "item_8mX9Nj"
       ],
       "settings": {
         "full_width": true,
