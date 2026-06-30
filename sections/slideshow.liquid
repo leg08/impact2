@@ -115,7 +115,7 @@ LIQUID
           {%- capture content_class -%}{{ block.settings.mobile_text_position }} {{ block.settings.desktop_text_position }}{%- endcapture -%}
 
           <div {% render 'surface', class: content_class, text_color: block.settings.text_color %}>
-            <div class="prose">
+            <div class="prose"class="prose" style="transform: translateY(56px);" style="transform: translateY(56px);">
               {%- if block.settings.subheading != blank -%}
                 <p class="subheading" data-sequence="subheading">{{ block.settings.subheading | escape }}</p>
               {%- endif -%}
